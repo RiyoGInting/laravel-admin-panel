@@ -21,12 +21,7 @@ class CompanyController extends Controller
         $company->save();
 
         // send response
-        return response()->json(
-            [
-                "message" => "Success",
-                "data" => $company
-            ]
-        );
+        return redirect('companies');
     }
 
     // function getAll()
@@ -45,19 +40,15 @@ class CompanyController extends Controller
 
     public function getAll(Request $request)
     {
-        if ($request->ajax()) {
-            $data = Company::latest()->get();
+        $data = Company::latest()->get();
 
-
-            return DataTables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
+        return datatables($data)
+            ->addColumn('action', function ($data) {
+                return '<a href="#edit-company-' . $data->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            })
+            ->rawColumns(['action'])
+            ->addIndexColumn()
+            ->make(true);
     }
 
     function getOne($id)
@@ -141,5 +132,10 @@ class CompanyController extends Controller
                 "message" => "Company with id $id successfully deleted"
             ]
         );
+    }
+
+    public function addIndex()
+    {
+        return view('companies.add');
     }
 }

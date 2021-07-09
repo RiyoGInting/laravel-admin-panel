@@ -13,6 +13,11 @@ class CompanySeeder extends Seeder
      */
     public function run()
     {
-        //
+        // User::firstOrCreate([
+        //     'email' => 'admin@admin.com'
+        // ], [
+        //     'email' => 'admin@admin.com',
+        //     'password' => Hash::make('password'),
+        // ]);
     }
 }

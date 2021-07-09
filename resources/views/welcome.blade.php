@@ -2,18 +2,27 @@
 <html>
 
 <head>
-    <title>Laravel 8|7 Datatables Tutorial</title>
+    <title>Datatables</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
     <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
+<!-- <style>
+    .header {
+        display: inline;
+    }
+</style> -->
 
 <body>
 
     <div class="container mt-5">
-        <h2 class="mb-4">Laravel 7|8 Yajra Datatables Example</h2>
-        <table class="table table-bordered yajra-datatable">
+        <div class="header">
+            <h2 class="mb-4">Company List</h2>
+            <a href="/addCompanies" class="btn btn-primary">ADD</a>
+        </div>
+
+        <table class="table table-bordered companies">
             <thead>
                 <tr>
                     <th>No</th>
@@ -21,7 +30,7 @@
                     <th>Email</th>
                     <th>Logo</th>
                     <th>Website</th>
-                    <th>Username</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,9 +47,8 @@
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 
 <script type="text/javascript">
-    $(function() {
-
-        var table = $('.yajra-datatable').DataTable({
+    $(document).ready(function() {
+        $('.companies').DataTable({
             processing: true,
             serverSide: true,
             ajax: "{{ route('companies.list') }}",
@@ -51,10 +59,6 @@
                 {
                     data: 'name',
                     name: 'name'
-                },
-                {
-                    data: 'username',
-                    name: 'username'
                 },
                 {
                     data: 'email',
@@ -71,12 +75,13 @@
                 {
                     data: 'action',
                     name: 'action',
-                    orderable: true,
-                    searchable: true
+                    orderable: false
                 },
+            ],
+            order: [
+                [0, 'desc']
             ]
         });
-
     });
 </script>
 

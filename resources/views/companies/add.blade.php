@@ -25,15 +25,15 @@
             </div>
         </div>
         <div class="mb-3 row">
-            <label for="logo" class="col-sm-2 col-form-label">Logo</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="logo">
-            </div>
-        </div>
-        <div class="mb-3 row">
             <label for="website" class="col-sm-2 col-form-label">Website</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="website">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="logo" class="col-sm-2 col-form-label">Logo</label>
+            <div class="col-sm-10">
+                <input type="file" class="form-control" name="logo">
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>

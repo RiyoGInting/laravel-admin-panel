@@ -8,35 +8,37 @@ use DataTables;
 
 class CompanyController extends Controller
 {
-    function create(Request $request)
-    {
-        // create new company
-        $company = new Company;
-        $company->name = $request->name;
-        $company->email = $request->email;
-        $company->logo = $request->logo;
-        $company->website = $request->website;
-
-        // save to database
-        $company->save();
-
-        // send response
-        return redirect('companies');
-    }
-
-    // function getAll()
-    // {
-    //     // get all data from db
-    //     $data = Company::all();
-
-    //     return DataTables::collection(Company::all())->make(true);
-    // }
-
     public function index()
     {
         return view('welcome');
     }
 
+    public function create(Request $request)
+    {
+        // create new company
+        $company = new Company;
+        $company->name = $request->name;
+        $company->email = $request->email;
+        $company->website = $request->website;
+        $company->logo = $request->logo;
+
+        // upload logo
+        if ($request->hasfile('logo')) {
+            $file = $request->file('logo');
+            $extension = $file->getClientOriginalExtension(); // get image extension
+            // $filename = time() . '.' . $extension;
+            // // $file->move('uploads/company', $filename);
+            // $company->logo = $filename;
+            $imageName = time() . '.' . $request->logo->extension();
+            $request->logo->move(public_path('uploads/company'), $imageName);
+        }
+
+        // save to database
+        $company->save();
+
+
+        return redirect('companies');
+    }
 
     public function getAll(Request $request)
     {

@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Employee extends Model
 {
+    protected $table = 'employees';
     use HasFactory, SoftDeletes;
+
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at', 'id'];
 }

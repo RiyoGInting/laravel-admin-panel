@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Company;
+use DataTables;
 
 class EmployeeController extends Controller
 {
+    public function index()
+    {
+        return view('employee');
+    }
+
     function create(Request $request)
     {
         // check whether the company exists or not
@@ -43,17 +49,30 @@ class EmployeeController extends Controller
         );
     }
 
-    function getAll()
-    {
-        // get all data from db
-        $data = Employee::all();
+    // function getAll()
+    // {
+    //     // get all data from db
+    //     $data = Employee::all();
 
-        return response()->json(
-            [
-                "message" => "Success",
-                "data" => $data
-            ]
-        );
+    //     return response()->json(
+    //         [
+    //             "message" => "Success",
+    //             "data" => $data
+    //         ]
+    //     );
+    // }
+
+    public function getAll(Request $request)
+    {
+        $data = Employee::latest()->get();
+
+        return datatables($data)
+            ->addColumn('action', function ($data) {
+                return '<a href="#edit-employee-' . $data->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            })
+            ->rawColumns(['action'])
+            ->addIndexColumn()
+            ->make(true);
     }
 
     function getOne($id)

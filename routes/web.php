@@ -17,3 +17,7 @@ use App\Http\Controllers\CompanyController;
 Route::get('companies', [CompanyController::class, 'index']);
 
 Route::get('companies/list', [CompanyController::class, 'getAll'])->name('companies.list');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

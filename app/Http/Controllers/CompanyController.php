@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\Company;
+use Illuminate\Support\Facades\Mail;
 use DataTables;
 
 class CompanyController extends Controller
@@ -21,7 +22,6 @@ class CompanyController extends Controller
 
 
         return view('companies.edit')->with([
-
             'company' => $companies,
             'id' => $id
         ]);
@@ -34,19 +34,30 @@ class CompanyController extends Controller
         $company->name = $request->name;
         $company->email = $request->email;
         $company->website = $request->website;
-        $company->logo = $request->logo;
-
-        // // image upload
-        // $image = $request->logo;
-        // if ($image) {
-        //     $imageName = time() . '.' . $request->logo->extension();
-        //     $request->logo->move(public_path('uploads/company'), $imageName);
-        //     $company->logo = $imageName;
+        Log::info($request->hasfile($request->logo));
+        // upload image
+        // if ($request->hasfile('logo')) {
+        //     $file = $request->file('logo');
+        //     $extention = $file->getClientOriginalExtension();
+        //     $filename = time() . '.' . $extention;
+        //     $file->move('uploads/companies', $filename);
+        //     $company->logo = $filename;
         // }
+        $image = $request->logo;
+        if ($image) {
+            $imageName = $image->getClientOriginalName();
+            $image->move('images', $imageName);
+            $company['logo'] = $imageName;
+        }
 
         // save to database
         $company->save();
 
+        // send email notification after create
+        Mail::raw('Thank you for joining mini-crm ' . $company->name, function ($message) use ($company) {
+            $message->to($company->email, $company->name);
+            $message->subject("Notification");
+        });
 
         return redirect('companies');
     }
@@ -57,7 +68,9 @@ class CompanyController extends Controller
 
         return datatables($data)
             ->addColumn('action', function ($data) {
-                return '<a href="edit/companies/' . $data->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+                $edit = '<a href="edit/companies/' . $data->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+                $delete = '<a href="edit/companies/' . $data->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
+                return $edit;
             })
             ->rawColumns(['action'])
             ->addIndexColumn()

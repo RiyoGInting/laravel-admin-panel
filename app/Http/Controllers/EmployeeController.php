@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Company;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use DataTables;
 
 class EmployeeController extends Controller
@@ -19,7 +20,6 @@ class EmployeeController extends Controller
     {
         $companies = Company::select('name', 'id')->get();
 
-
         return view('employees.add')->with([
             'company'   => $companies,
         ]);
@@ -29,7 +29,6 @@ class EmployeeController extends Controller
     {
         $employee = Employee::where('id', $id)->get();
         $companies = Company::select('name', 'id')->get();
-
 
         return view('employees.edit')->with([
             'employee' => $employee,
@@ -64,6 +63,12 @@ class EmployeeController extends Controller
 
         // save to database
         $employee->save();
+
+        // send email notification after create
+        Mail::raw('Thank you for joining mini-crm ' . $employee->first_name, function ($message) use ($employee) {
+            $message->to($employee->email, $employee->first_name);
+            $message->subject("Notification");
+        });
 
         // send response
         return redirect('employees');
@@ -110,8 +115,6 @@ class EmployeeController extends Controller
     {
         // find data by id to update
         $employee = Employee::where('id', $id)->first();
-
-        Log::info($request->all());
 
         // if data does not exist
         if (!$employee) {

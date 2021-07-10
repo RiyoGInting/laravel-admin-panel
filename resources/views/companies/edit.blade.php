@@ -1,8 +1,7 @@
 @extends('layouts.main')
+@section('title', 'Edit Company')
 
 @section('container')
-
-
 <h3>Edit Company</h3>
 <form method="POST" action="{{ route('update.company', $id) }}">
     @csrf
@@ -23,7 +22,7 @@
     <div class="mb-3 row">
         <label for="logo" class="col-sm-2 col-form-label">Logo</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" name="logo" placeholder={{$c->logo}}>
+            <input type="file" class="form-control" name="logo" placeholder={{$c->logo}}>
         </div>
     </div>
     <div class="mb-3 row">
@@ -40,5 +39,4 @@
         </button>
     </div>
 </form>
-
 @endsection

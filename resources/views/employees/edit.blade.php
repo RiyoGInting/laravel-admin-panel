@@ -1,8 +1,7 @@
 @extends('layouts.main')
+@section('title', 'Edit Employee')
 
 @section('container')
-
-
 <h3>Edit Employee</h3>
 <form method="POST" action="{{ route('update.employee', $id) }}">
     @csrf
@@ -51,5 +50,4 @@
         </button>
     </div>
 </form>
-
 @endsection

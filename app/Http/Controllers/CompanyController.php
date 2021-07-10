@@ -14,6 +14,19 @@ class CompanyController extends Controller
         return view('company');
     }
 
+    public function updateIndex($id)
+    {
+
+        $companies = Company::where('id', $id)->get();
+
+
+        return view('companies.edit')->with([
+
+            'company' => $companies,
+            'id' => $id
+        ]);
+    }
+
     public function create(Request $request)
     {
         // create new company
@@ -44,7 +57,7 @@ class CompanyController extends Controller
 
         return datatables($data)
             ->addColumn('action', function ($data) {
-                return '<a href="#edit-company-' . $data->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+                return '<a href="edit/companies/' . $data->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
             })
             ->rawColumns(['action'])
             ->addIndexColumn()
@@ -101,12 +114,7 @@ class CompanyController extends Controller
         $company->save();
 
         // send response
-        return response()->json(
-            [
-                "message" => "Success ",
-                "data" => $company
-            ]
-        );
+        return redirect('companies');
     }
 
     function delete($id)

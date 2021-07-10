@@ -33,7 +33,8 @@ class EmployeeController extends Controller
 
         return view('employees.edit')->with([
             'employee' => $employee,
-            'company' => $companies
+            'company' => $companies,
+            'id' => $id
         ]);
     }
 
@@ -67,19 +68,6 @@ class EmployeeController extends Controller
         // send response
         return redirect('employees');
     }
-
-    // function getAll()
-    // {
-    //     // get all data from db
-    //     $data = Employee::all();
-
-    //     return response()->json(
-    //         [
-    //             "message" => "Success",
-    //             "data" => $data
-    //         ]
-    //     );
-    // }
 
     public function getAll(Request $request)
     {
@@ -123,6 +111,8 @@ class EmployeeController extends Controller
         // find data by id to update
         $employee = Employee::where('id', $id)->first();
 
+        Log::info($request->all());
+
         // if data does not exist
         if (!$employee) {
             return response()->json(
@@ -148,12 +138,7 @@ class EmployeeController extends Controller
         $employee->save();
 
         // send response
-        return response()->json(
-            [
-                "message" => "Success ",
-                "data" => $employee
-            ]
-        );
+        return redirect('employees');
     }
 
     function delete($id)

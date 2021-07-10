@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Models\Company;
 use DataTables;
 
@@ -10,7 +11,7 @@ class CompanyController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        return view('company');
     }
 
     public function create(Request $request)
@@ -22,16 +23,13 @@ class CompanyController extends Controller
         $company->website = $request->website;
         $company->logo = $request->logo;
 
-        // upload logo
-        if ($request->hasfile('logo')) {
-            $file = $request->file('logo');
-            $extension = $file->getClientOriginalExtension(); // get image extension
-            // $filename = time() . '.' . $extension;
-            // // $file->move('uploads/company', $filename);
-            // $company->logo = $filename;
-            $imageName = time() . '.' . $request->logo->extension();
-            $request->logo->move(public_path('uploads/company'), $imageName);
-        }
+        // // image upload
+        // $image = $request->logo;
+        // if ($image) {
+        //     $imageName = time() . '.' . $request->logo->extension();
+        //     $request->logo->move(public_path('uploads/company'), $imageName);
+        //     $company->logo = $imageName;
+        // }
 
         // save to database
         $company->save();

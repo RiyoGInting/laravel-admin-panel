@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Company;
+use Illuminate\Support\Facades\Log;
 use DataTables;
 
 class EmployeeController extends Controller
@@ -14,8 +15,31 @@ class EmployeeController extends Controller
         return view('employee');
     }
 
+    public function addIndex()
+    {
+        $companies = Company::select('name', 'id')->get();
+
+
+        return view('employees.add')->with([
+            'company'   => $companies,
+        ]);
+    }
+
+    public function updateIndex($id)
+    {
+        $employee = Employee::where('id', $id)->get();
+        $companies = Company::select('name', 'id')->get();
+
+
+        return view('employees.edit')->with([
+            'employee' => $employee,
+            'company' => $companies
+        ]);
+    }
+
     function create(Request $request)
     {
+        Log::info($request->all());
         // check whether the company exists or not
         $company = Company::where('id', $request->company_id)->get();
 
@@ -41,12 +65,7 @@ class EmployeeController extends Controller
         $employee->save();
 
         // send response
-        return response()->json(
-            [
-                "message" => "Success",
-                "data" => $employee
-            ]
-        );
+        return redirect('employees');
     }
 
     // function getAll()
@@ -68,7 +87,7 @@ class EmployeeController extends Controller
 
         return datatables($data)
             ->addColumn('action', function ($data) {
-                return '<a href="#edit-employee-' . $data->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+                return '<a href="edit/employees/' . $data->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
             })
             ->rawColumns(['action'])
             ->addIndexColumn()

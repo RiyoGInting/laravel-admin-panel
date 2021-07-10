@@ -18,19 +18,18 @@
 
     <div class="container mt-5">
         <div class="header">
-            <h2 class="mb-4">Employee List</h2>
-            <a href="/addEmployees" class="btn btn-primary">ADD</a>
+            <h2 class="mb-4">Company List</h2>
+            <a href="/addCompanies" class="btn btn-primary">ADD</a>
         </div>
 
-        <table class="table table-bordered employees">
+        <table class="table table-bordered companies">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Company ID</th>
+                    <th>Name</th>
                     <th>Email</th>
-                    <th>Phone</th>
+                    <th>Logo</th>
+                    <th>Website</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -49,33 +48,29 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.employees').DataTable({
+        $('.companies').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('employees.list') }}",
+            ajax: "{{ route('companies.list') }}",
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
                 },
                 {
-                    data: 'first_name',
-                    name: 'first_name'
-                },
-                {
-                    data: 'last_name',
-                    name: 'last_name'
-                },
-                {
-                    data: 'company_id',
-                    name: 'company_id'
+                    data: 'name',
+                    name: 'name'
                 },
                 {
                     data: 'email',
                     name: 'email'
                 },
                 {
-                    data: 'phone',
-                    name: 'phone'
+                    data: 'logo',
+                    name: 'logo'
+                },
+                {
+                    data: 'website',
+                    name: 'website'
                 },
                 {
                     data: 'action',

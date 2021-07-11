@@ -1,7 +1,7 @@
-@extends('layouts.main')
-
+@extends('layouts.master')
 @section('title', 'Add Employee')
-@section('container')
+
+@section('content')
 <h3>Add Employee</h3>
 
 @if ($errors->any())

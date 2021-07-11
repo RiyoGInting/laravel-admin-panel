@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
 
 class CompanySeeder extends Seeder
 {
@@ -13,11 +15,13 @@ class CompanySeeder extends Seeder
      */
     public function run()
     {
-        // User::firstOrCreate([
-        //     'email' => 'admin@admin.com'
-        // ], [
-        //     'email' => 'admin@admin.com',
-        //     'password' => Hash::make('password'),
-        // ]);
+        $faker = Faker::create('en_US');
+
+        for ($i = 0; $i < 50; $i++) {
+            DB::table('companies')->insert([
+                'name' => $faker->company,
+                'email' => $faker->companyEmail,
+            ]);
+        }
     }
 }

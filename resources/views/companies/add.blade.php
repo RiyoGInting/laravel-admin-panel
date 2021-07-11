@@ -1,19 +1,8 @@
-@extends('layouts.main')
+@extends('layouts.master')
 @section('title', 'Add Company')
 
-@section('container')
+@section('content')
 <h3>Add Company</h3>
-
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
-
 <form method="POST" action="{{ route('create.company') }}" enctype="multipart/form-data">
     @csrf
     <div class="mb-3 row">

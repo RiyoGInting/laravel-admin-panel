@@ -1,8 +1,12 @@
-@extends('layouts.main')
+@extends('layouts.master')
+@section('custom-head')
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+@endsection
 
 @section('title', 'Company List')
-@section('container')
-
+@section('content')
 <div class="container mt-5">
     <div class="header">
         <h2 class="mb-4">Company List</h2>
@@ -24,9 +28,9 @@
         </tbody>
     </table>
 </div>
+@endsection
 
-
-
+@section('datatable')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
@@ -71,5 +75,4 @@
         });
     });
 </script>
-
 @endsection

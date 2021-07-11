@@ -1,7 +1,7 @@
-@extends('layouts.main')
+@extends('layouts.master')
 @section('title', 'Edit Employee')
 
-@section('container')
+@section('content')
 <h3>Edit Employee</h3>
 <form method="POST" action="{{ route('update.employee', $id) }}">
     @csrf
@@ -10,13 +10,13 @@
     <div class="mb-3 row">
         <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" name="first_name" placeholder={{$e->first_name}}>
+            <input type="text" class="form-control" name="first_name" value="{{ $e->first_name }}">
         </div>
     </div>
     <div class="mb-3 row">
         <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" name="last_name" placeholder={{$e->last_name}}>
+            <input type="text" class="form-control" name="last_name" value="{{ $e->last_name }}">
         </div>
     </div>
     <div class="mb-3 row">
@@ -33,13 +33,13 @@
     <div class="mb-3 row">
         <label for="email" class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" name="email" placeholder={{$e->email}}>
+            <input type="text" class="form-control" name="email" value="{{$e->email}}">
         </div>
     </div>
     <div class="mb-3 row">
         <label for="phone" class="col-sm-2 col-form-label">Phone</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" name="phone" placeholder={{$e->phone}}>
+            <input type="text" class="form-control" name="phone" value="{{$e->phone}}">
         </div>
     </div>
     @endforeach

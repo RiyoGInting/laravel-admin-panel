@@ -1,7 +1,7 @@
-@extends('layouts.main')
+@extends('layouts.master')
 @section('title', 'Delete Employee')
 
-@section('container')
+@section('content')
 <h5>Continue the delete process?</h5>
 <form method="POST" action="{{ route('delete.employee', $id) }}">
     @csrf

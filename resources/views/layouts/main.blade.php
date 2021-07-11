@@ -25,6 +25,8 @@
                     <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Home Page</a>
                     <a class="nav-link" href="{{ url('/companies') }}">Company List</a>
                     <a class="nav-link" href="{{ url('/employees') }}">Employee List</a>
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+
                 </div>
             </div>
         </div>

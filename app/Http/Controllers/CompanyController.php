@@ -3,28 +3,42 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use App\Models\Company;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 use DataTables;
 
 class CompanyController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+
     public function index()
     {
         return view('company');
     }
 
-    public function updateIndex($id)
+    public function getAll(Request $request)
     {
+        $data = Company::latest()->get();
 
-        $companies = Company::where('id', $id)->get();
+        return datatables($data)
+            ->addColumn('action', function ($data) {
+                return '<a href="edit/companies/' . $data->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                    <a href="delete/companies/' . $data->id . '"  class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
+            })
+            ->rawColumns(['action'])
+            ->addIndexColumn()
+            ->make(true);
+    }
 
 
-        return view('companies.edit')->with([
-            'company' => $companies,
-            'id' => $id
-        ]);
+    public function addIndex()
+    {
+        return view('companies.add');
     }
 
     public function create(Request $request)
@@ -34,20 +48,16 @@ class CompanyController extends Controller
         $company->name = $request->name;
         $company->email = $request->email;
         $company->website = $request->website;
-        Log::info($request->hasfile($request->logo));
-        // upload image
-        // if ($request->hasfile('logo')) {
-        //     $file = $request->file('logo');
-        //     $extention = $file->getClientOriginalExtension();
-        //     $filename = time() . '.' . $extention;
-        //     $file->move('uploads/companies', $filename);
-        //     $company->logo = $filename;
-        // }
-        $image = $request->logo;
-        if ($image) {
-            $imageName = $image->getClientOriginalName();
-            $image->move('images', $imageName);
-            $company['logo'] = $imageName;
+
+        // upload logo
+        if ($request->hasfile('logo')) {
+            $file = $request->file('logo');
+            $filename = Str::random(32) . '.' . $request->logo->extension();
+            $request->logo->move('uploads/company', $filename);
+
+            $company->logo = $filename;
+        } else {
+            $company->logo = $request->logo;
         }
 
         // save to database
@@ -62,43 +72,17 @@ class CompanyController extends Controller
         return redirect('companies');
     }
 
-    public function getAll(Request $request)
+
+    public function updateIndex($id)
     {
-        $data = Company::latest()->get();
 
-        return datatables($data)
-            ->addColumn('action', function ($data) {
-                $edit = '<a href="edit/companies/' . $data->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-                $delete = '<a href="edit/companies/' . $data->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
-                return $edit;
-            })
-            ->rawColumns(['action'])
-            ->addIndexColumn()
-            ->make(true);
-    }
+        $companies = Company::where('id', $id)->get();
 
-    function getOne($id)
-    {
-        // get one data from db
-        $data = Company::where('id', $id)->get();
 
-        // if data is not found
-        if (count($data) == 0) {
-            return response()->json(
-                [
-                    "message" => "Company with id $id not found"
-                ],
-                404
-            );
-        }
-
-        // if success
-        return response()->json(
-            [
-                "message" => "Success",
-                "data" => $data
-            ]
-        );
+        return view('companies.edit')->with([
+            'company' => $companies,
+            'id' => $id
+        ]);
     }
 
     function update($id, Request $request)
@@ -130,6 +114,16 @@ class CompanyController extends Controller
         return redirect('companies');
     }
 
+
+    public function deleteIndex($id)
+    {
+        // $companies = Company::where('id', $id)->get();
+
+        return view('companies.delete')->with([
+            'id' => $id
+        ]);
+    }
+
     function delete($id)
     {
         // find company
@@ -148,15 +142,31 @@ class CompanyController extends Controller
         // if company exist, delete it
         $company->delete();
 
-        return response()->json(
-            [
-                "message" => "Company with id $id successfully deleted"
-            ]
-        );
+        return redirect('companies');
     }
 
-    public function addIndex()
+
+    function getOne($id)
     {
-        return view('companies.add');
+        // get one data from db
+        $data = Company::where('id', $id)->get();
+
+        // if data is not found
+        if (count($data) == 0) {
+            return response()->json(
+                [
+                    "message" => "Company with id $id not found"
+                ],
+                404
+            );
+        }
+
+        // if success
+        return response()->json(
+            [
+                "message" => "Success",
+                "data" => $data
+            ]
+        );
     }
 }

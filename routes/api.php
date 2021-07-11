@@ -23,7 +23,7 @@ Route::post('/company', 'App\Http\Controllers\CompanyController@create');
 Route::get('/companies', 'App\Http\Controllers\CompanyController@getAll')->name('get.company');
 Route::get('/company/{id}', 'App\Http\Controllers\CompanyController@getOne');
 Route::put('/company/{id}', 'App\Http\Controllers\CompanyController@update');
-Route::delete('/company/{id}', 'App\Http\Controllers\CompanyController@delete');
+Route::delete('delete/company/{id}', 'App\Http\Controllers\CompanyController@delete');
 
 // employees routes
 Route::post('/employee', 'App\Http\Controllers\EmployeeController@create');

@@ -16,6 +16,21 @@ class EmployeeController extends Controller
         return view('employee');
     }
 
+    public function getAll(Request $request)
+    {
+        $data = Employee::latest()->get();
+
+        return datatables($data)
+            ->addColumn('action', function ($data) {
+                return '<a href="edit/employees/' . $data->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                    <a href="delete/employees/' . $data->id . '" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
+            })
+            ->rawColumns(['action'])
+            ->addIndexColumn()
+            ->make(true);
+    }
+
+
     public function addIndex()
     {
         $companies = Company::select('name', 'id')->get();
@@ -25,34 +40,14 @@ class EmployeeController extends Controller
         ]);
     }
 
-    public function updateIndex($id)
-    {
-        $employee = Employee::where('id', $id)->get();
-        $companies = Company::select('name', 'id')->get();
-
-        return view('employees.edit')->with([
-            'employee' => $employee,
-            'company' => $companies,
-            'id' => $id
-        ]);
-    }
-
     function create(Request $request)
     {
-        Log::info($request->all());
-        // check whether the company exists or not
-        $company = Company::where('id', $request->company_id)->get();
-
-        // if the company is does not exist
-        if (count($company) == 0) {
-            return response()->json(
-                [
-                    "message" => "Company_id $request->company_id not valid"
-                ],
-                400
-            );
-        }
-
+        $validator = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'company_id' => 'required',
+            'email' => 'unique:employees',
+        ]);
         // create new employee
         $employee = new Employee;
         $employee->company_id = $request->company_id;
@@ -74,41 +69,17 @@ class EmployeeController extends Controller
         return redirect('employees');
     }
 
-    public function getAll(Request $request)
+
+    public function updateIndex($id)
     {
-        $data = Employee::latest()->get();
+        $employee = Employee::where('id', $id)->get();
+        $companies = Company::select('name', 'id')->get();
 
-        return datatables($data)
-            ->addColumn('action', function ($data) {
-                return '<a href="edit/employees/' . $data->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            })
-            ->rawColumns(['action'])
-            ->addIndexColumn()
-            ->make(true);
-    }
-
-    function getOne($id)
-    {
-        // get one data from db
-        $data = Employee::where('id', $id)->get();
-
-        // if data is not found
-        if (count($data) == 0) {
-            return response()->json(
-                [
-                    "message" => "Employee with id $id not found"
-                ],
-                404
-            );
-        }
-
-        // if success
-        return response()->json(
-            [
-                "message" => "Success",
-                "data" => $data
-            ]
-        );
+        return view('employees.edit')->with([
+            'employee' => $employee,
+            'company' => $companies,
+            'id' => $id
+        ]);
     }
 
     function update($id, Request $request)
@@ -144,6 +115,14 @@ class EmployeeController extends Controller
         return redirect('employees');
     }
 
+
+    public function deleteIndex($id)
+    {
+        return view('employees.delete')->with([
+            'id' => $id
+        ]);
+    }
+
     function delete($id)
     {
         // find employee
@@ -162,9 +141,29 @@ class EmployeeController extends Controller
         // if employee exist, delete it
         $employee->delete();
 
+        return redirect('employees');
+    }
+
+    function getOne($id)
+    {
+        // get one data from db
+        $data = Employee::where('id', $id)->get();
+
+        // if data is not found
+        if (count($data) == 0) {
+            return response()->json(
+                [
+                    "message" => "Employee with id $id not found"
+                ],
+                404
+            );
+        }
+
+        // if success
         return response()->json(
             [
-                "message" => "employee with id $id successfully deleted"
+                "message" => "Success",
+                "data" => $data
             ]
         );
     }

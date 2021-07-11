@@ -3,6 +3,17 @@
 @section('title', 'Add Employee')
 @section('container')
 <h3>Add Employee</h3>
+
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
 <form method="POST" action="{{ route('create.employee') }}">
     @csrf
     <div class="mb-3 row">
@@ -21,7 +32,7 @@
         <label for="company_id" class="col-sm-2 col-form-label">Company</label>
         <div class="col-sm-10">
             <select name="company_id" id="company_id">
-                <option selected="selected">Choose one</option>
+                <option selected="selected" value="">Choose one</option>
                 @foreach ($company as $c)
                 <option value="{{ $c->id}}">{{$c->name}}</option>
                 @endforeach

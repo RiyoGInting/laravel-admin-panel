@@ -3,7 +3,7 @@
 
 @section('container')
 <h3>Add Company</h3>
-<form method="POST" action="{{ route('create.company') }}">
+<form method="POST" action="{{ route('create.company') }}" enctype="multipart/form-data">
     @csrf
     <div class="mb-3 row">
         <label for="name" class="col-sm-2 col-form-label">Company Name</label>

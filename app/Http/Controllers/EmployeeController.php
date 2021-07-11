@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Company;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 use DataTables;
 
 class EmployeeController extends Controller
@@ -42,12 +42,15 @@ class EmployeeController extends Controller
 
     function create(Request $request)
     {
+        // validation
         $validator = $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
             'company_id' => 'required',
-            'email' => 'unique:employees',
+            'email' => 'unique:employees|nullable',
+            'phone' => 'unique:employees|nullable',
         ]);
+
         // create new employee
         $employee = new Employee;
         $employee->company_id = $request->company_id;
@@ -59,11 +62,14 @@ class EmployeeController extends Controller
         // save to database
         $employee->save();
 
-        // send email notification after create
-        Mail::raw('Thank you for joining mini-crm ' . $employee->first_name, function ($message) use ($employee) {
-            $message->to($employee->email, $employee->first_name);
-            $message->subject("Notification");
-        });
+        if ($request->email) {
+            // send email notification after create
+            Mail::raw('Thank you for joining mini-crm ' . $employee->first_name, function ($message) use ($employee) {
+                $message->to($employee->email, $employee->first_name);
+                $message->subject("Notification");
+            });
+        }
+
 
         // send response
         return redirect('employees');

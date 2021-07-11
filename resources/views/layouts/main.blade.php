@@ -26,12 +26,10 @@
                     <a class="nav-link" href="{{ url('/companies') }}">Company List</a>
                     <a class="nav-link" href="{{ url('/employees') }}">Employee List</a>
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-
                 </div>
             </div>
         </div>
     </nav>
-
     @yield('container')
     <!-- Optional JavaScript; choose one of the two! -->
 

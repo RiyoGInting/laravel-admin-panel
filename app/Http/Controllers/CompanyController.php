@@ -43,6 +43,13 @@ class CompanyController extends Controller
 
     public function create(Request $request)
     {
+        // validation
+        $validator = $request->validate([
+            'name' => 'required',
+            'email' => 'unique:companies|nullable',
+            'logo' => 'image|mimes:png,jpg,jpeg|max:10000',
+        ]);
+
         // create new company
         $company = new Company;
         $company->name = $request->name;
@@ -53,7 +60,7 @@ class CompanyController extends Controller
         if ($request->hasfile('logo')) {
             $file = $request->file('logo');
             $filename = Str::random(32) . '.' . $request->logo->extension();
-            $request->logo->move('uploads/company', $filename);
+            $request->logo->move(storage_path('app/public/logo'), $filename);
 
             $company->logo = $filename;
         } else {
@@ -63,11 +70,14 @@ class CompanyController extends Controller
         // save to database
         $company->save();
 
-        // send email notification after create
-        Mail::raw('Thank you for joining mini-crm ' . $company->name, function ($message) use ($company) {
-            $message->to($company->email, $company->name);
-            $message->subject("Notification");
-        });
+        if ($request->email) {
+            // send email notification after create
+            Mail::raw('Thank you for joining mini-crm ' . $company->name, function ($message) use ($company) {
+                $message->to($company->email, $company->name);
+                $message->subject("Notification");
+            });
+        }
+
 
         return redirect('companies');
     }

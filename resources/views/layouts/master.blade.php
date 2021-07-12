@@ -51,7 +51,20 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+
+                <li>
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
+                      {{ strtoupper(session('locale') ?? config('app.locale')) }}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="{{ url('switch/id') }}">ID</a></li>
+                      <li><a class="dropdown-item" href="{{ url('switch/en') }}">EN</a></li>
+                    </ul>
+                  </div>
+                </li>
+
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
                 @guest
                 @if (Route::has('login'))
                 <li class="breadcrumb-item active"><a href="{{ route('login') }}">{{ __('Login') }}</a></li>

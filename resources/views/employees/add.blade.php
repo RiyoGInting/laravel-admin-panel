@@ -2,7 +2,7 @@
 @section('title', 'Add Employee')
 
 @section('content')
-<h3>Add Employee</h3>
+<h3>{{__('Add Employee')}}</h3>
 
 @if ($errors->any())
 <div class="alert alert-danger">
@@ -17,22 +17,22 @@
 <form method="POST" action="{{ route('create.employee') }}">
     @csrf
     <div class="mb-3 row">
-        <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
+        <label for="first_name" class="col-sm-2 col-form-label">{{__('First Name')}}</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" name="first_name">
         </div>
     </div>
     <div class="mb-3 row">
-        <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
+        <label for="last_name" class="col-sm-2 col-form-label">{{__('Last Name')}}</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" name="last_name">
         </div>
     </div>
     <div class="mb-3 row">
-        <label for="company_id" class="col-sm-2 col-form-label">Company</label>
+        <label for="company_id" class="col-sm-2 col-form-label">{{__('Company')}}</label>
         <div class="col-sm-10">
             <select name="company_id" id="company_id">
-                <option selected="selected" value="">Choose one</option>
+                <option selected="selected" value="">{{__('Choose one')}}</option>
                 @foreach ($company as $c)
                 <option value="{{ $c->id}}">{{$c->name}}</option>
                 @endforeach
@@ -46,11 +46,11 @@
         </div>
     </div>
     <div class="mb-3 row">
-        <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+        <label for="phone" class="col-sm-2 col-form-label">{{__('Phone')}}</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" name="phone">
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">{{__('Submit')}}</button>
 </form>
 @endsection

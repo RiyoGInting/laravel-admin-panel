@@ -1,34 +1,34 @@
 @extends('layouts.master')
 @section('custom-head')
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
-    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 @endsection
 
-    @section('content')
-    <div class="container mt-5">
-        <div class="header">
-            <h2 class="mb-4">Employee List</h2>
-            <a href="/addEmployees" class="btn btn-primary">ADD</a>
-        </div>
-
-        <table class="table table-bordered employees">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Company ID</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+@section('content')
+<div class="container mt-5">
+    <div class="header">
+        <h2 class="mb-4">{{__('Employee List')}}</h2>
+        <a href="/addEmployees" class="btn btn-primary">{{__('ADD')}}</a>
     </div>
-    @endsection
+
+    <table class="table table-bordered employees">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>{{__('First Name')}}</th>
+                <th>{{__('Last Name')}}</th>
+                <th>{{__('Company ID')}}</th>
+                <th>{{__('Email')}}</th>
+                <th>{{__('Phone')}}</th>
+                <th>{{__('Action')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+@endsection
 
 @section('datatable')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>

@@ -9,19 +9,18 @@
 @section('content')
 <div class="container mt-5">
     <div class="header">
-        <h2 class="mb-4">Company List</h2>
-        <a href="/addCompanies" class="btn btn-primary">ADD</a>
+        <h2 class="mb-4">{{__('Company List')}}</h2>
+        <a href="/addCompanies" class="btn btn-primary">{{__('ADD')}}</a>
     </div>
-
     <table class="table table-bordered companies">
         <thead>
             <tr>
                 <th>No</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Logo</th>
-                <th>Website</th>
-                <th>Action</th>
+                <th>{{__('Name')}}</th>
+                <th>{{__('Email')}}</th>
+                <th>{{__('Logo')}}</th>
+                <th>{{__('Website')}}</th>
+                <th>{{__('Action')}}</th>
             </tr>
         </thead>
         <tbody>

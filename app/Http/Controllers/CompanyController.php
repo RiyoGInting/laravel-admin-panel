@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Company;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
 use DataTables;
 
@@ -18,6 +19,10 @@ class CompanyController extends Controller
 
     public function index()
     {
+        if ($locale = session('locale')) {
+            app()->setLocale($locale);
+        }
+
         return view('company');
     }
 

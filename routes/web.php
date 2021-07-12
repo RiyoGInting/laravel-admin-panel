@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', [DashboardController::class, 'index']);
+Route::get('/switch/{locale}', [DashboardController::class, 'switch']);
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('addCompanies', [CompanyController::class, 'addIndex']);

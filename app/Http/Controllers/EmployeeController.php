@@ -13,6 +13,10 @@ class EmployeeController extends Controller
 {
     public function index()
     {
+        if ($locale = session('locale')) {
+            app()->setLocale($locale);
+        }
+
         return view('employee');
     }
 

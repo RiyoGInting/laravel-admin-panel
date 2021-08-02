@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Company;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\CompaniesExport;
+use App\Imports\CompaniesImport;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
 use DataTables;
@@ -183,5 +186,19 @@ class CompanyController extends Controller
                 "data" => $data
             ]
         );
+    }
+
+    public function export()
+    {
+        return Excel::download(new CompaniesExport, 'companies.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $file = $request->file('file');
+
+        Excel::import(new CompaniesImport, $file);
+
+        return redirect('/companies');
     }
 }

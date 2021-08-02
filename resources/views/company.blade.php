@@ -7,25 +7,41 @@
 
 @section('title', 'Company List')
 @section('content')
-<div class="container mt-5">
-    <div class="header">
-        <h2 class="mb-4">{{__('Company List')}}</h2>
-        <a href="/addCompanies" class="btn btn-primary">{{__('ADD')}}</a>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="mb-4 text-center">{{__('Company List')}}</h2>
+        </div>
+        <div class="card-body">
+            <form action="/companies/import" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <input type="file" name="file">
+
+                    <button type="submit" class="btn btn-primary">{{__('Import Excel')}}</button>
+                </div>
+            </form>
+            <div class="container mt-5">
+
+                <table class="table table-bordered companies">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>{{__('Name')}}</th>
+                            <th>{{__('Email')}}</th>
+                            <th>{{__('Logo')}}</th>
+                            <th>{{__('Website')}}</th>
+                            <th>{{__('Action')}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <a href="/addCompanies" class="btn btn-primary">{{__('ADD')}}</a>
+                <a href="/companies/export" class="btn btn-primary">{{__('DOWNLOAD')}}</a>
+            </div>
+        </div>
     </div>
-    <table class="table table-bordered companies">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>{{__('Name')}}</th>
-                <th>{{__('Email')}}</th>
-                <th>{{__('Logo')}}</th>
-                <th>{{__('Website')}}</th>
-                <th>{{__('Action')}}</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
 </div>
 @endsection
 

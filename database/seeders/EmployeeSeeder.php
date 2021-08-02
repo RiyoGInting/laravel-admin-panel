@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
 
-class CompanySeeder extends Seeder
+class EmployeeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,10 +18,12 @@ class CompanySeeder extends Seeder
         $faker = Faker::create('en_US');
 
         for ($i = 0; $i < 100; $i++) {
-            DB::table('companies')->insert([
-                'name' => $faker->company,
-                'email' => $faker->companyEmail,
-                'website' => $faker->domainName,
+            DB::table('employees')->insert([
+                'first_name' => $faker->firstName,
+                'last_name' => $faker->lastName,
+                'company_id' => rand(1, 100),
+                'email' => $faker->freeEmail,
+                'phone' => $faker->phoneNumber,
             ]);
         }
     }

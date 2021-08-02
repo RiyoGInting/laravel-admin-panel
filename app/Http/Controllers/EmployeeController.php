@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Company;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\EmployeesExport;
+use App\Imports\EmployeesImport;
 use Illuminate\Support\Facades\Log;
 use DataTables;
 
@@ -176,5 +179,19 @@ class EmployeeController extends Controller
                 "data" => $data
             ]
         );
+    }
+
+    public function export()
+    {
+        return Excel::download(new EmployeesExport, 'employees.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $file = $request->file('file');
+
+        Excel::import(new EmployeesImport, $file);
+
+        return redirect('/employees');
     }
 }

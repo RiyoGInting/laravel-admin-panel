@@ -47,3 +47,8 @@ Route::get('employees/list', [EmployeeController::class, 'getAll'])->name('emplo
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/companies/export', [CompanyController::class, 'export']);
+Route::post('/companies/import', [CompanyController::class, 'import']);
+Route::get('/employees/export', [EmployeeController::class, 'export']);
+Route::post('/employees/import', [EmployeeController::class, 'import']);

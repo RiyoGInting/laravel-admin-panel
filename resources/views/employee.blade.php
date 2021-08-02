@@ -6,27 +6,42 @@
 @endsection
 
 @section('content')
-<div class="container mt-5">
-    <div class="header">
-        <h2 class="mb-4">{{__('Employee List')}}</h2>
-        <a href="/addEmployees" class="btn btn-primary">{{__('ADD')}}</a>
-    </div>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-center">{{__('Employee List')}}</h2>
+        </div>
+        <div class="card-body">
+            <form action="/employees/import" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <input type="file" name="file">
 
-    <table class="table table-bordered employees">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>{{__('First Name')}}</th>
-                <th>{{__('Last Name')}}</th>
-                <th>{{__('Company ID')}}</th>
-                <th>{{__('Email')}}</th>
-                <th>{{__('Phone')}}</th>
-                <th>{{__('Action')}}</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+                    <button type="submit" class="btn btn-primary">{{__('Import Excel')}}</button>
+                </div>
+            </form>
+
+            <div class="container mt-5">
+                <table class="table table-bordered employees">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>{{__('First Name')}}</th>
+                            <th>{{__('Last Name')}}</th>
+                            <th>{{__('Company ID')}}</th>
+                            <th>{{__('Email')}}</th>
+                            <th>{{__('Phone')}}</th>
+                            <th>{{__('Action')}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <a href="/addEmployees" class="btn btn-primary">{{__('ADD')}}</a>
+                <a href="/employees/export" class="btn btn-primary">{{__('DOWNLOAD')}}</a>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 

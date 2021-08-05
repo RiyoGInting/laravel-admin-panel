@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Company;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\CompaniesExport;
 use App\Imports\CompaniesImport;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Log;
+use App\Jobs\SendEmailJob;
+use Carbon\Carbon;
 use DataTables;
 
 class CompanyController extends Controller
@@ -79,11 +78,12 @@ class CompanyController extends Controller
         $company->save();
 
         if ($request->email) {
-            // send email notification after create
-            Mail::raw('Thank you for joining mini-crm ' . $company->name, function ($message) use ($company) {
-                $message->to($company->email, $company->name);
-                $message->subject("Notification");
-            });
+            // send email notification after create to queue
+            $email = $company->email;
+            $job = (new SendEmailJob($email))
+                ->delay(Carbon::now()->addSeconds(5));
+
+            dispatch($job);
         }
 
 

@@ -18,6 +18,9 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
+            <p align="right">
+                <a href="/api/admin/logout" class="btn btn-danger">{{__('logout')}}</a>
+            </p>
             <h2 class="mb-4 text-center">{{__('Company List')}}</h2>
         </div>
         <div class="card-body">

@@ -63,26 +63,7 @@
                     </ul>
                   </div>
                 </li>
-
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                @guest
-                @if (Route::has('login'))
-                <li class="breadcrumb-item active"><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                @endif
-
-                @else
-                <li class="breadcrumb-item active">
-                  <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                  </a>
-
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                  </form>
-                </li>
-                @endguest
-
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->

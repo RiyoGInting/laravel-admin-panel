@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,16 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// // companies routes
-// Route::post('/company', 'App\Http\Controllers\CompanyController@create');
-// Route::get('/companies', 'App\Http\Controllers\CompanyController@getAll')->name('get.company');
-// Route::get('/company/{id}', 'App\Http\Controllers\CompanyController@getOne');
-// Route::put('/company/{id}', 'App\Http\Controllers\CompanyController@update');
-// Route::delete('delete/company/{id}', 'App\Http\Controllers\CompanyController@delete');
 
-// // employees routes
-// Route::post('/employee', 'App\Http\Controllers\EmployeeController@create');
-// Route::get('/employees', 'App\Http\Controllers\EmployeeController@getAll')->name('get.employee');
-// Route::get('/employee/{id}', 'App\Http\Controllers\EmployeeController@getOne');
-// Route::put('/employee/{id}', 'App\Http\Controllers\EmployeeController@update');
-// Route::delete('/employee/{id}', 'App\Http\Controllers\EmployeeController@delete');
+Route::post('/admin/login', [AuthController::class, 'login']);
+Route::get('/admin/logout', [AuthController::class, 'logout']);

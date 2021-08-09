@@ -5,6 +5,7 @@
     "ADD":"ADD",
     "Name":"Name",
     "Email":"Email",
+    "Password": "Password",
     "Logo":"Logo",
     "Action":"Action",
     "Edit":"Edit",
@@ -25,5 +26,9 @@
     "Company Name": "Company Name",
     "Add Company": "Add Company",
     "Website": "Website",
-    "Edit Company": "Edit Company"
+    "Edit Company": "Edit Company",
+    "Created By": "Created By",
+    "Updated By": "Updated By",
+    "DOWNLOAD" : "Download",
+    "logout" : "Logout"
 }

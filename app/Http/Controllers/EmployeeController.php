@@ -58,6 +58,9 @@ class EmployeeController extends Controller
             'phone' => 'unique:employees|nullable',
         ]);
 
+        // get logged id set in middleware
+        $createdById = $request->get('id');
+
         // create new employee
         $employee = new Employee;
         $employee->company_id = $request->company_id;
@@ -65,6 +68,7 @@ class EmployeeController extends Controller
         $employee->last_name = $request->last_name;
         $employee->email = $request->email;
         $employee->phone = $request->phone;
+        $employee->created_by_id = $createdById;
 
         // save to database
         $employee->save();
@@ -112,6 +116,9 @@ class EmployeeController extends Controller
             );
         }
 
+        // get logged id set in middleware
+        $updatedById = $request->get('id');
+
         // set value to be update
         // give validation incase user does not give some data, so the old value will be use
         $employee->company_id = $request->company_id ?
@@ -122,6 +129,7 @@ class EmployeeController extends Controller
             $request->last_name : $employee->last_name;
         $employee->email = $request->email ? $request->email : $employee->email;
         $employee->phone = $request->phone ? $request->phone : $employee->phone;
+        $employee->updated_by_id = $updatedById;
 
         // save updated product to db
         $employee->save();

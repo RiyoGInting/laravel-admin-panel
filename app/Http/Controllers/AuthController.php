@@ -25,6 +25,7 @@ class AuthController extends Controller
             "aud" => "http://127.0.0.1:8000/api/admin/login",
             "iat" => 1356999524,
             "nbf" => 1357000000,
+            'uid' => $user->id,
             'mil' => $user->email,
             'ssw' => $user->password,
         ];

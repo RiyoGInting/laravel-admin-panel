@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
+use Carbon\Carbon;
 
 class CompanySeeder extends Seeder
 {
@@ -22,6 +23,8 @@ class CompanySeeder extends Seeder
                 'name' => $faker->company,
                 'email' => $faker->companyEmail,
                 'website' => $faker->domainName,
+                'created_by_id' => '1',
+                'created_at' => Carbon::now(),
             ]);
         }
     }

@@ -57,11 +57,15 @@ class CompanyController extends Controller
             'logo' => 'image|mimes:png,jpg,jpeg|max:10000',
         ]);
 
+        // get logged id set in middleware
+        $createdById = $request->get('id');
+
         // create new company
         $company = new Company;
         $company->name = $request->name;
         $company->email = $request->email;
         $company->website = $request->website;
+        $company->created_by_id = $createdById;
 
         // upload logo
         if ($request->hasfile('logo')) {
@@ -118,12 +122,16 @@ class CompanyController extends Controller
             );
         }
 
+        // get logged id set in middleware
+        $updatedById = $request->get('id');
+
         // set value to be update
         // give validation incase user does not give some data, so the old value will be use
         $company->name = $request->name ? $request->name : $company->name;
         $company->email = $request->email ? $request->email : $company->email;
         $company->logo = $request->logo ? $request->logo : $company->logo;
         $company->website = $request->website ? $request->website : $company->website;
+        $company->updated_by_id = $updatedById;
 
         // save updated product to db
         $company->save();

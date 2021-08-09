@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
+use Carbon\Carbon;
 
 class EmployeeSeeder extends Seeder
 {
@@ -24,6 +25,8 @@ class EmployeeSeeder extends Seeder
                 'company_id' => rand(1, 100),
                 'email' => $faker->freeEmail,
                 'phone' => $faker->phoneNumber,
+                'created_by_id' => '1',
+                'created_at' => Carbon::now(),
             ]);
         }
     }

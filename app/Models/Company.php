@@ -12,5 +12,12 @@ class Company extends Model
     use HasFactory, SoftDeletes;
 
     protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
-    protected $fillable = ['name', 'email', 'logo', 'website'];
+    protected $fillable = [
+        'name',
+        'email',
+        'logo',
+        'website',
+        'created_by_id',
+        'updated_by_id'
+    ];
 }

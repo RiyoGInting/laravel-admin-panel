@@ -42,6 +42,8 @@
                             <th>{{__('Email')}}</th>
                             <th>{{__('Logo')}}</th>
                             <th>{{__('Website')}}</th>
+                            <th>{{__('Created By')}}</th>
+                            <th>{{__('Updated By')}}</th>
                             <th>{{__('Action')}}</th>
                         </tr>
                     </thead>
@@ -54,6 +56,8 @@
                             <th>Email</th>
                             <th>Logo</th>
                             <th>Website</th>
+                            <th>Created By</th>
+                            <th>Updated By</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -99,6 +103,14 @@
                 {
                     data: 'website',
                     name: 'website'
+                },
+                {
+                    data: 'created_by_id',
+                    name: 'created_by_id'
+                },
+                {
+                    data: 'updated_by_id',
+                    name: 'updated_by_id'
                 },
                 {
                     data: 'action',

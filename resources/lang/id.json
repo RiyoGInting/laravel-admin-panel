@@ -5,6 +5,7 @@
     "ADD":"Tambah",
     "Name":"Nama",
     "Email":"Email",
+    "Password" : "Kata Sandi",
     "Logo":"Logo",
     "Action":"Tindakan",
     "Edit":"Ubah",
@@ -25,5 +26,9 @@
     "Company Name": "Nama Perusahaan",
     "Add Company": "Tambah Daftar Perusahaan",
     "Website": "Situs Web",
-    "Edit Company": "Ubah data perusahaan"
+    "Edit Company": "Ubah data perusahaan",
+    "Created By" : "Ditambahkan oleh",
+    "Updated By" : "Diubah oleh",
+    "DOWNLOAD" : "Unduh",
+    "logout" : "keluar"
 }

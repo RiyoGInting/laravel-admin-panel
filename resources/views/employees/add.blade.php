@@ -40,9 +40,15 @@
         </div>
     </div>
     <div class="mb-3 row">
-        <label for="email" class="col-sm-2 col-form-label">Email</label>
+        <label for="email" class="col-sm-2 col-form-label">{{__('Email')}}</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" name="email">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="password" class="col-sm-2 col-form-label">{{__('Password')}}</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="password" required>
         </div>
     </div>
     <div class="mb-3 row">

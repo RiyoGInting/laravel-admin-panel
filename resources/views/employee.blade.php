@@ -39,9 +39,11 @@
                             <th>No</th>
                             <th>{{__('First Name')}}</th>
                             <th>{{__('Last Name')}}</th>
-                            <th>{{__('Company ID')}}</th>
                             <th>{{__('Email')}}</th>
                             <th>{{__('Phone')}}</th>
+                            <th>{{__('Company ID')}}</th>
+                            <th>{{__('Created By')}}</th>
+                            <th>{{__('Updated By')}}</th>
                             <th>{{__('Action')}}</th>
                         </tr>
                     </thead>
@@ -55,6 +57,8 @@
                             <th>Company ID</th>
                             <th>Email</th>
                             <th>Phone</th>
+                            <th>Created By</th>
+                            <th>Updated By</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -94,16 +98,24 @@
                     name: 'last_name'
                 },
                 {
-                    data: 'company_id',
-                    name: 'company_id'
-                },
-                {
                     data: 'email',
                     name: 'email'
                 },
                 {
                     data: 'phone',
                     name: 'phone'
+                },
+                {
+                    data: 'company_id',
+                    name: 'company_id'
+                },
+                {
+                    data: 'created_by_id',
+                    name: 'created_by_id'
+                },
+                {
+                    data: 'updated_by_id',
+                    name: 'updated_by_id'
                 },
                 {
                     data: 'action',

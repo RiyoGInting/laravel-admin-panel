@@ -25,6 +25,9 @@ class EmployeesExport implements FromCollection, ShouldAutoSize, WithHeadings
             'Last Name',
             'Email',
             'Phone',
+            'Created At',
+            'Created By',
+            'Updated By'
         ];
     }
 }

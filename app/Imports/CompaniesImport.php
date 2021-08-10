@@ -18,7 +18,8 @@ class CompaniesImport implements ToModel, withHeadingRow
         return new Company([
             'name' => $row['name'],
             'email' => $row['email'],
-            'website' => $row['website']
+            'website' => $row['website'],
+            'created_by_id' => $row['created_by'],
         ]);
     }
 }

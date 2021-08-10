@@ -42,6 +42,7 @@
                             <th>{{__('Email')}}</th>
                             <th>{{__('Phone')}}</th>
                             <th>{{__('Company ID')}}</th>
+                            <th>{{__('Created At')}}</th>
                             <th>{{__('Created By')}}</th>
                             <th>{{__('Updated By')}}</th>
                             <th>{{__('Action')}}</th>
@@ -57,6 +58,7 @@
                             <th>Company ID</th>
                             <th>Email</th>
                             <th>Phone</th>
+                            <th>Created At</th>
                             <th>Created By</th>
                             <th>Updated By</th>
                         </tr>
@@ -108,6 +110,10 @@
                 {
                     data: 'company_id',
                     name: 'company_id'
+                },
+                {
+                    data: 'created_at',
+                    name: 'created_at'
                 },
                 {
                     data: 'created_by_id',

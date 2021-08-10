@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,5 @@ use App\Http\Controllers\AuthController;
 
 Route::post('/admin/login', [AuthController::class, 'login']);
 Route::get('/admin/logout', [AuthController::class, 'logout']);
+
+Route::get('get/employee/{companyId}', [EmployeeController::class, 'getByCompanyId'])->middleware('jwt');

@@ -21,6 +21,7 @@ class EmployeesImport implements ToModel, WithHeadingRow
             'company_id' => $row['company_id'],
             'email' => $row['email'],
             'phone' => $row['phone'],
+            'created_by_id' => $row['created_by'],
         ]);
     }
 }

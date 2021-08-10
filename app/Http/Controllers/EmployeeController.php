@@ -204,4 +204,30 @@ class EmployeeController extends Controller
 
         return redirect('/employees');
     }
+
+    function getByCompanyId($companyId)
+    {
+        $company = Company::where('id', $companyId)->get();
+        $employees = Employee::where('company_id', $companyId)->get();
+
+        // if data is not found
+        if (count($company) == 0) {
+            return response()->json(
+                [
+                    "message" => "Company with id $companyId not found"
+                ],
+                404
+            );
+        } else if (count($employees) == 0) {
+            return response()->json(['message' => 'This company has no employees']);
+        }
+
+        // if success
+        return response()->json(
+            [
+                "message" => "Success",
+                "data" => $employees
+            ]
+        );
+    }
 }

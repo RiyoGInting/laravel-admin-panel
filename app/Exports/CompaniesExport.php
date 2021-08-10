@@ -25,6 +25,9 @@ class CompaniesExport implements FromCollection, ShouldAutoSize, WithHeadings
             'Email',
             'Logo',
             'Website',
+            'Created At',
+            'Created By',
+            'Updated By'
         ];
     }
 }

@@ -18,9 +18,9 @@
     <div class="card">
         <div class="card-header">
             <p align="right">
-                <a href="/api/admin/logout" class="btn btn-danger">{{__('logout')}}</a>
+                <a href="/api/admin/logout" class="btn btn-danger">{{trans('multilingual.logout')}}</a>
             </p>
-            <h2 class="text-center">{{__('Employee List')}}</h2>
+            <h2 class="text-center">{{trans('multilingual.employee_list')}}</h2>
         </div>
         <div class="card-body">
             <form action="/employees/import" method="POST" enctype="multipart/form-data">
@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <input type="file" name="file">
 
-                    <button type="submit" class="btn btn-primary">{{__('Import Excel')}}</button>
+                    <button type="submit" class="btn btn-primary">{{trans('multilingual.import_excel')}}</button>
                 </div>
             </form>
 
@@ -37,15 +37,15 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>{{__('First Name')}}</th>
-                            <th>{{__('Last Name')}}</th>
-                            <th>{{__('Email')}}</th>
-                            <th>{{__('Phone')}}</th>
-                            <th>{{__('Company ID')}}</th>
-                            <th>{{__('Created At')}}</th>
-                            <th>{{__('Created By')}}</th>
-                            <th>{{__('Updated By')}}</th>
-                            <th>{{__('Action')}}</th>
+                            <th>{{trans('multilingual.first_name')}}</th>
+                            <th>{{trans('multilingual.last_name')}}</th>
+                            <th>{{trans('multilingual.email')}}</th>
+                            <th>{{trans('multilingual.phone')}}</th>
+                            <th>{{trans('multilingual.company_id')}}</th>
+                            <th>{{trans('multilingual.created_at')}}</th>
+                            <th>{{trans('multilingual.created_by')}}</th>
+                            <th>{{trans('multilingual.updated_by')}}</th>
+                            <th>{{trans('multilingual.action')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,8 +64,8 @@
                         </tr>
                     </tfoot>
                 </table>
-                <a href="/addEmployees" class="btn btn-primary">{{__('ADD')}}</a>
-                <a href="/employees/export" class="btn btn-primary">{{__('DOWNLOAD')}}</a>
+                <a href="/addEmployees" class="btn btn-primary">{{trans('multilingual.add')}}</a>
+                <a href="/employees/export" class="btn btn-primary">{{trans('multilingual.download')}}</a>
             </div>
         </div>
     </div>

@@ -13,62 +13,54 @@
 </style>
 @endsection
 
+@section('title', 'Employee List')
+
+@section('custom-nav-li')
+<li class="breadcrumb-item"><a href="/api/admin/logout">{{trans('multilingual.logout')}}</a></li>
+@endsection
+
 @section('content')
-<div class="container">
-    <div class="card">
-        <div class="card-header">
-            <p align="right">
-                <a href="/api/admin/logout" class="btn btn-danger">{{trans('multilingual.logout')}}</a>
-            </p>
-            <h2 class="text-center">{{trans('multilingual.employee_list')}}</h2>
-        </div>
-        <div class="card-body">
-            <form action="/employees/import" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group">
-                    <input type="file" name="file">
+<div class="container mt-5">
+    <form action="/employees/import" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="form-group">
+            <input type="file" name="file">
 
-                    <button type="submit" class="btn btn-primary">{{trans('multilingual.import_excel')}}</button>
-                </div>
-            </form>
-
-            <div class="container mt-5">
-                <table class="table table-bordered table-striped employees" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>{{trans('multilingual.first_name')}}</th>
-                            <th>{{trans('multilingual.last_name')}}</th>
-                            <th>{{trans('multilingual.email')}}</th>
-                            <th>{{trans('multilingual.phone')}}</th>
-                            <th>{{trans('multilingual.company_id')}}</th>
-                            <th>{{trans('multilingual.created_at')}}</th>
-                            <th>{{trans('multilingual.created_by')}}</th>
-                            <th>{{trans('multilingual.updated_by')}}</th>
-                            <th>{{trans('multilingual.action')}}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>No</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Company ID</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Created At</th>
-                            <th>Created By</th>
-                            <th>Updated By</th>
-                        </tr>
-                    </tfoot>
-                </table>
-                <a href="/addEmployees" class="btn btn-primary">{{trans('multilingual.add')}}</a>
-                <a href="/employees/export" class="btn btn-primary">{{trans('multilingual.download')}}</a>
-            </div>
+            <button type="submit" class="btn btn-primary">{{trans('multilingual.import_excel')}}</button>
         </div>
-    </div>
+    </form>
+
+    <table class="table table-bordered table-striped employees" style="width:100%">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>{{trans('multilingual.first_name')}}</th>
+                <th>{{trans('multilingual.last_name')}}</th>
+                <th>{{trans('multilingual.email')}}</th>
+                <th>{{trans('multilingual.phone')}}</th>
+                <th>{{trans('multilingual.company_id')}}</th>
+                <th>{{trans('multilingual.created_at')}}</th>
+                <th>{{trans('multilingual.created_by')}}</th>
+                <th>{{trans('multilingual.action')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>No</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Company ID</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Created At</th>
+                <th>Created By</th>
+            </tr>
+        </tfoot>
+    </table>
+    <a href="/addEmployees" class="btn btn-primary">{{trans('multilingual.add')}}</a>
+    <a href="/employees/export" class="btn btn-primary">{{trans('multilingual.download')}}</a>
 </div>
 @endsection
 
@@ -118,10 +110,6 @@
                 {
                     data: 'created_by_id',
                     name: 'created_by_id'
-                },
-                {
-                    data: 'updated_by_id',
-                    name: 'updated_by_id'
                 },
                 {
                     data: 'action',

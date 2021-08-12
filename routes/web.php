@@ -23,6 +23,7 @@ Auth::routes();
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/switch/{locale}', [DashboardController::class, 'switch']);
+Route::get('/timezone/{tz}', [DashboardController::class, 'timezone']);
 
 Route::group(['middleware' => ['jwt']], function () {
     Route::get('addCompanies', [CompanyController::class, 'addIndex']);
@@ -33,6 +34,8 @@ Route::group(['middleware' => ['jwt']], function () {
     Route::delete('delete/companies/{id}', [CompanyController::class, 'delete'])->name('delete.company');
     Route::get('/companies/export', [CompanyController::class, 'export']);
     Route::post('/companies/import', [CompanyController::class, 'import']);
+    Route::get('companies', [CompanyController::class, 'index']);
+    Route::get('companies/list', [CompanyController::class, 'getAll'])->name('companies.list');
 
     Route::get('addEmployees', [EmployeeController::class, 'addIndex']);
     Route::post('addEmployees', [EmployeeController::class, 'create'])->name('create.employee');
@@ -42,9 +45,6 @@ Route::group(['middleware' => ['jwt']], function () {
     Route::delete('delete/employees/{id}', [EmployeeController::class, 'delete'])->name('delete.employee');
     Route::get('/employees/export', [EmployeeController::class, 'export']);
     Route::post('/employees/import', [EmployeeController::class, 'import']);
+    Route::get('employees/list', [EmployeeController::class, 'getAll'])->name('employees.list');
+    Route::get('employees', [EmployeeController::class, 'index']);
 });
-
-Route::get('companies', [CompanyController::class, 'index']);
-Route::get('companies/list', [CompanyController::class, 'getAll'])->name('companies.list');
-Route::get('employees/list', [EmployeeController::class, 'getAll'])->name('employees.list');
-Route::get('employees', [EmployeeController::class, 'index']);

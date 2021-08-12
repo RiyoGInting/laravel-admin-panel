@@ -11,14 +11,10 @@ use App\Imports\CompaniesImport;
 use App\Jobs\SendEmailJob;
 use Carbon\Carbon;
 use DataTables;
+use Illuminate\Support\Facades\Config;
 
 class CompanyController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-
     public function index()
     {
         if ($locale = session('locale')) {
@@ -34,8 +30,8 @@ class CompanyController extends Controller
 
         return datatables($data)
             ->addColumn('action', function ($data) {
-                return '<a href="edit/companies/' . $data->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-                    <a href="delete/companies/' . $data->id . '"  class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
+                return '<a href="edit/companies/' . $data->id . '" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                    <a href="delete/companies/' . $data->id . '"  class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>';
             })
             ->rawColumns(['action'])
             ->addIndexColumn()

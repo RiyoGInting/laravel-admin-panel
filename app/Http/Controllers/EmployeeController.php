@@ -29,8 +29,8 @@ class EmployeeController extends Controller
 
         return datatables($data)
             ->addColumn('action', function ($data) {
-                return '<a href="edit/employees/' . $data->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-                    <a href="delete/employees/' . $data->id . '" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
+                return '<a href="edit/employees/' . $data->id . '" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                    <a href="delete/employees/' . $data->id . '" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>';
             })
             ->rawColumns(['action'])
             ->addIndexColumn()

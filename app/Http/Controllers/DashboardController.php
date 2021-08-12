@@ -22,4 +22,11 @@ class DashboardController extends Controller
 
         return redirect()->back();
     }
+
+    public function timezone($tz)
+    {
+        Session::put('timezone', $tz);
+
+        return redirect()->back();
+    }
 }

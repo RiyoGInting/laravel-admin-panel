@@ -14,60 +14,53 @@
 @endsection
 
 @section('title', 'Company List')
+
+@section('custom-nav-li')
+<li class="breadcrumb-item"><a href="/api/admin/logout">{{trans('multilingual.logout')}}</a></li>
+@endsection
+
 @section('content')
-<div class="container">
-    <div class="card">
-        <div class="card-header">
-            <p align="right">
-                <a href="/api/admin/logout" class="btn btn-danger">{{trans('multilingual.logout')}}</a>
-            </p>
-            <h2 class="mb-4 text-center">{{trans('multilingual.company_list')}}</h2>
-        </div>
-        <div class="card-body">
-            <form action="/companies/import" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group">
-                    <input type="file" name="file">
+<div class="container mt-5">
+    <form action="/companies/import" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="form-group">
+            <input type="file" name="file">
 
-                    <button type="submit" class="btn btn-primary">{{trans('multilingual.import_excel')}}</button>
-                </div>
-            </form>
-            <div class="container mt-5">
-
-                <table class="table table-bordered table-striped companies" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>{{trans('multilingual.name')}}</th>
-                            <th>{{trans('multilingual.email')}}</th>
-                            <th>{{trans('multilingual.logo')}}</th>
-                            <th>{{trans('multilingual.website')}}</th>
-                            <th>{{trans('multilingual.created_at')}}</th>
-                            <th>{{trans('multilingual.created_by')}}</th>
-                            <th>{{trans('multilingual.updated_by')}}</th>
-                            <th>{{trans('multilingual.action')}}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>No</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Logo</th>
-                            <th>Website</th>
-                            <th>Created At</th>
-                            <th>Created By</th>
-                            <th>Updated By</th>
-                        </tr>
-                    </tfoot>
-                </table>
-                <a href="/addCompanies" class="btn btn-primary">{{trans('multilingual.add')}}</a>
-                <a href="/companies/export" class="btn btn-primary">{{trans('multilingual.download')}}</a>
-            </div>
+            <button type="submit" class="btn btn-primary">{{trans('multilingual.import_excel')}}</button>
         </div>
-    </div>
+    </form>
+
+    <table class="table table-bordered table-striped companies" style="width:100%">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>{{trans('multilingual.name')}}</th>
+                <th>{{trans('multilingual.email')}}</th>
+                <th>{{trans('multilingual.logo')}}</th>
+                <th>{{trans('multilingual.website')}}</th>
+                <th>{{trans('multilingual.created_at')}}</th>
+                <th>{{trans('multilingual.created_by')}}</th>
+                <th>{{trans('multilingual.updated_by')}}</th>
+                <th>{{trans('multilingual.action')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Logo</th>
+                <th>Website</th>
+                <th>Created At</th>
+                <th>Created By</th>
+                <th>Updated By</th>
+            </tr>
+        </tfoot>
+    </table>
+    <a href="/addCompanies" class="btn btn-primary">{{trans('multilingual.add')}}</a>
+    <a href="/companies/export" class="btn btn-primary">{{trans('multilingual.download')}}</a>
 </div>
 @endsection
 

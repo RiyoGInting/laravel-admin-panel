@@ -51,10 +51,12 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-
+                <li class="breadcrumb-item"><a href="/">{{trans('multilingual.home')}}</a></li>
+                @yield('custom-nav-li')
+                <li class="breadcrumb-item"></li>
                 <li>
                   <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
+                    <button class="btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
                       {{ strtoupper(session('locale') ?? config('app.locale')) }}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -63,7 +65,20 @@
                     </ul>
                   </div>
                 </li>
-                <li class="breadcrumb-item"><a href="/">{{trans('multilingual.home')}}</a></li>
+                <li class="breadcrumb-item"></li>
+                <li class="breadcrumb-item"></li>
+                <li>
+                  <div class="dropdown">
+                    <button class="btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
+                      {{ strtoupper(session('timezone') ?? 'utc') }}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="{{ url('timezone/Jakarta') }}">Jakarta</a></li>
+                      <li><a class="dropdown-item" href="{{ url('timezone/Singapore') }}">Singapore</a></li>
+                      <li><a class="dropdown-item" href="{{ url('timezone/Tokyo') }}">Tokyo</a></li>
+                    </ul>
+                  </div>
+                </li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->

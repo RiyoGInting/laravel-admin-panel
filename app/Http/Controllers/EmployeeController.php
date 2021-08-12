@@ -10,20 +10,15 @@ use App\Exports\EmployeesExport;
 use App\Imports\EmployeesImport;
 use App\Jobs\SendEmailJob;
 use Carbon\Carbon;
-use DataTables;
 
 class EmployeeController extends Controller
 {
     public function index()
     {
-        if ($locale = session('locale')) {
-            app()->setLocale($locale);
-        }
-
         return view('employee');
     }
 
-    public function getAll(Request $request)
+    public function getAll()
     {
         $data = Employee::latest()->get();
 

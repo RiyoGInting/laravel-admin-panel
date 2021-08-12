@@ -1,9 +1,7 @@
 @extends('layouts.master')
 @section('custom-head')
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
-<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 <style>
     tfoot input {
         width: 100%;
@@ -65,11 +63,10 @@
 @endsection
 
 @section('datatable')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<!-- DataTables -->
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {

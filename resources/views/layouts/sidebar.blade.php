@@ -27,7 +27,7 @@
           <a href="#" class="nav-link active">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
-              Dashboard
+              Menu
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
@@ -35,13 +35,13 @@
             <li class="nav-item">
               <a href="{{ url('/companies') }}" class="nav-link active">
                 <i class="far fa-circle nav-icon"></i>
-                <p>{{trans('multilingual.company')}}</p>
+                <p>{{trans('multilingual.company_list')}}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{ url('/employees') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>{{trans('multilingual.employee')}}</p>
+                <p>{{trans('multilingual.employee_list')}}</p>
               </a>
             </li>
           </ul>

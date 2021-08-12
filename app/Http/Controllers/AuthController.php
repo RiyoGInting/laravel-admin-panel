@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Firebase\JWT\JWT;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class AuthController extends Controller
 {
@@ -35,7 +34,7 @@ class AuthController extends Controller
         return response()->view('company')->withCookie(cookie('access-token', $token));
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
         return response()->view('welcome')->withCookie(cookie('access-token', 'logout'));
     }

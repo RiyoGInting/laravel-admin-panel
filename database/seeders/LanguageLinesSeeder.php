@@ -117,7 +117,7 @@ class LanguageLinesSeeder extends Seeder
         LanguageLine::create([
             'group' => 'multilingual',
             'key' => 'employee_list',
-            'text' => ['en' => 'Employee List', 'id' => 'List Karyawan'],
+            'text' => ['en' => 'Employee List', 'id' => 'Daftar Karyawan'],
         ]);
         LanguageLine::create([
             'group' => 'multilingual',
@@ -138,6 +138,51 @@ class LanguageLinesSeeder extends Seeder
             'group' => 'multilingual',
             'key' => 'company_id',
             'text' => ['en' => 'Company ID', 'id' => 'ID Perusahaan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'add_company_form',
+            'text' => ['en' => 'Add Company Form', 'id' => 'Formulir Pendaftaran Perusahaan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'add_employee_form',
+            'text' => ['en' => 'Add Employee Form', 'id' => 'Formulir Pendaftaran Karyawan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'company_name',
+            'text' => ['en' => 'Company Name', 'id' => 'Nama Perusahaan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'choose_company',
+            'text' => ['en' => 'Choose Company', 'id' => 'Pilih Perusahaan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'edit',
+            'text' => ['en' => 'Edit', 'id' => 'Edit'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'edit_company',
+            'text' => ['en' => 'Edit Company', 'id' => 'Edit Perusahaan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'edit_employee',
+            'text' => ['en' => 'Edit Employee', 'id' => 'Edit Karyawan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'continue_delete',
+            'text' => ['en' => 'Are you sure want to delete this data?', 'id' => 'Anda yakin ingin menghapus data ini?'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'delete',
+            'text' => ['en' => 'Delete', 'id' => 'Hapus'],
         ]);
     }
 }

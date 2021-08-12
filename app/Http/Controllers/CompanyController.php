@@ -10,21 +10,15 @@ use App\Exports\CompaniesExport;
 use App\Imports\CompaniesImport;
 use App\Jobs\SendEmailJob;
 use Carbon\Carbon;
-use DataTables;
-use Illuminate\Support\Facades\Config;
 
 class CompanyController extends Controller
 {
     public function index()
     {
-        if ($locale = session('locale')) {
-            app()->setLocale($locale);
-        }
-
         return view('company');
     }
 
-    public function getAll(Request $request)
+    public function getAll()
     {
         $data = Company::latest()->get();
 

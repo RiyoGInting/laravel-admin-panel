@@ -24,6 +24,10 @@ class Jwt
             $id = $payload->uid;
             $request->attributes->set('id', $id);
 
+            if ($locale = session('locale')) {
+                app()->setLocale($locale);
+            }
+
             if ($tz = session('timezone')) {
                 date_default_timezone_set("Asia/$tz");
             }

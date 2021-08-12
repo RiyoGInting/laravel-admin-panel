@@ -39,6 +39,7 @@
                 <th>{{trans('multilingual.company_id')}}</th>
                 <th>{{trans('multilingual.created_at')}}</th>
                 <th>{{trans('multilingual.created_by')}}</th>
+                <th>Updated By</th>
                 <th>{{trans('multilingual.action')}}</th>
             </tr>
         </thead>
@@ -54,6 +55,7 @@
                 <th>Phone</th>
                 <th>Created At</th>
                 <th>Created By</th>
+                <th>Updated By</th>
             </tr>
         </tfoot>
     </table>
@@ -107,6 +109,10 @@
                 {
                     data: 'created_by_id',
                     name: 'created_by_id'
+                },
+                {
+                    data: 'updated_by_id',
+                    name: 'updated_by_id'
                 },
                 {
                     data: 'action',

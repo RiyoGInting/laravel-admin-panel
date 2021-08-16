@@ -16,7 +16,7 @@ class AddPasswordCreatedByIdUpdatedByIdToEmployeesTable extends Migration
         Schema::table('employees', function (Blueprint $table) {
             // Add new column
             $table->string('password')->nullable();
-            $table->unsignedBigInteger('created_by_id');
+            $table->unsignedBigInteger('created_by_id')->nullable();
             $table->foreign('created_by_id')->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('updated_by_id')->nullable();

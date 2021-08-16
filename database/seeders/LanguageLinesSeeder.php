@@ -184,5 +184,25 @@ class LanguageLinesSeeder extends Seeder
             'key' => 'delete',
             'text' => ['en' => 'Delete', 'id' => 'Hapus'],
         ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'add_company',
+            'text' => ['en' => 'Add Company', 'id' => 'Tambah Perusahaan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'add_employee',
+            'text' => ['en' => 'Add Employee', 'id' => 'Tambah Karyawan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'forms',
+            'text' => ['en' => 'Forms', 'id' => 'Formulir'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'datatables',
+            'text' => ['en' => 'Data Tables', 'id' => 'Tabel Data'],
+        ]);
     }
 }

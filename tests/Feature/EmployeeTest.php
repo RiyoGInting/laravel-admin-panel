@@ -38,32 +38,36 @@ class EmployeeTest extends TestCase
             'last_name' => 'test'
         ]);
 
-        $response->assertRedirect('/login');
+        $response->assertStatus(302);
+        $response->assertRedirect('/');
+    }
+
+    public function test_get_employees()
+    {
+        $this->withoutMiddleware();
+        $response = $this->get('/employees');
+
+        $response->assertStatus(200);
     }
 
     public function test_add_company_for_employee()
     {
-        $admin = $this->post('/login', [
-            'email' => 'admin@admin.com',
-            'password' => 'password'
-        ]);
+        $this->withoutMiddleware();
 
         $response = $this->post('/addCompanies', [
-            'name' => 'PT Sumber Jaya 2',
+            'name' => 'Maju Jaya',
         ]);
 
+        $response->assertStatus(302);
         $response->assertRedirect('/companies');
     }
 
     public function test_add_employee()
     {
-        $admin = $this->post('/login', [
-            'email' => 'admin@admin.com',
-            'password' => 'password'
-        ]);
+        $this->withoutMiddleware();
 
-        $companyId = Company::select('id')->where('name', 'PT Sumber Jaya')->first();
-        $id = (string)$companyId->id;
+        $company = Company::select('id')->where('name', 'Maju Jaya')->first();
+        $id = (string)$company->id;
 
         $response = $this->post('/addEmployees', [
             'first_name' => 'user',
@@ -71,36 +75,48 @@ class EmployeeTest extends TestCase
             'company_id' => $id,
         ]);
 
+        $response->assertStatus(302);
+        $response->assertRedirect('/employees');
+    }
+
+    public function test_update_employee()
+    {
+        $this->withoutMiddleware();
+
+        $employee = Employee::select('id')->where('first_name', 'user')->first();
+        $id = (string)$employee->id;
+
+        $response = $this->put("/employees/$id", [
+            'last_name' => 'user update',
+        ]);
+
+        $response->assertStatus(302);
         $response->assertRedirect('/employees');
     }
 
     public function test_delete_employee()
     {
-        $admin = $this->post('/login', [
-            'email' => 'admin@admin.com',
-            'password' => 'password'
-        ]);
+        $this->withoutMiddleware();
 
         $employeeId = Employee::select('id')->where('first_name', 'user')->first();
         $id = (string)$employeeId->id;
 
         $response = $this->delete('/delete/employees/' . $id);
 
+        $response->assertStatus(302);
         $response->assertRedirect('/employees');
     }
 
     public function test_delete_company_for_employee()
     {
-        $admin = $this->post('/login', [
-            'email' => 'admin@admin.com',
-            'password' => 'password'
-        ]);
+        $this->withoutMiddleware();
 
-        $companyId = Company::select('id')->where('name', 'PT Sumber Jaya 2')->first();
+        $companyId = Company::select('id')->where('name', 'Maju Jaya')->first();
         $id = (string)$companyId->id;
 
         $response = $this->delete('/delete/companies/' . $id);
 
+        $response->assertStatus(302);
         $response->assertRedirect('/companies');
     }
 }

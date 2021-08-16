@@ -32,7 +32,7 @@ class Jwt
                 date_default_timezone_set("Asia/$tz");
             }
         } catch (\Throwable $th) {
-            return response()->view('welcome');
+            return redirect('/');
         }
 
 

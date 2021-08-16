@@ -28,7 +28,7 @@
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-edit"></i>
             <p>
-              Forms
+              {{trans('multilingual.forms')}}
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
@@ -36,13 +36,13 @@
             <li class="nav-item">
               <a href="/addCompanies" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Add Company</p>
+                <p>{{trans('multilingual.add_company')}}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="/addEmployees" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Add Employee</p>
+                <p>{{trans('multilingual.add_employee')}}</p>
               </a>
             </li>
           </ul>
@@ -51,7 +51,7 @@
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-table"></i>
             <p>
-              DataTables
+              {{trans('multilingual.datatables')}}
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
@@ -59,13 +59,13 @@
             <li class="nav-item">
               <a href="companies" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Companies </p>
+                <p>{{trans('multilingual.company')}}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="employees" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Employees</p>
+                <p>{{trans('multilingual.employee')}}</p>
               </a>
             </li>
           </ul>

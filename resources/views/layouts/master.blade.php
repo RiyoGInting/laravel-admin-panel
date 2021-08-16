@@ -46,7 +46,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="/" class="nav-link">Home</a>
+          <a href="/" class="nav-link">{{trans('multilingual.home')}}</a>
         </li>
       </ul>
 
@@ -65,7 +65,7 @@
         </li>
 
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="/api/admin/logout" class="nav-link">Logout</a>
+          <a href="/api/admin/logout" class="nav-link">{{trans('multilingual.logout')}}</a>
         </li>
       </ul>
     </nav>

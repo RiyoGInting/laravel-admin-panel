@@ -31,11 +31,11 @@ class AuthController extends Controller
 
         $token = JWT::encode($payload, env('JWT_SECRET'), 'HS256');
 
-        return response()->view('company')->withCookie(cookie('access-token', $token));
+        return redirect('/companies')->withCookie(cookie('access-token', $token));
     }
 
     public function logout()
     {
-        return response()->view('welcome')->withCookie(cookie('access-token', 'logout'));
+        return redirect('/')->withCookie(cookie('access-token', 'logout'));
     }
 }

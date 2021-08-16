@@ -59,7 +59,6 @@
             </tr>
         </tfoot>
     </table>
-    <a href="/addEmployees" class="btn btn-primary">{{trans('multilingual.add')}}</a>
     <a href="/employees/export" class="btn btn-primary">{{trans('multilingual.download')}}</a>
 </div>
 @endsection

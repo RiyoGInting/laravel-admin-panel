@@ -14,7 +14,7 @@
 @section('title', 'Company List')
 
 @section('custom-nav-li')
-<li class="breadcrumb-item"><a href="/api/admin/logout">{{trans('multilingual.logout')}}</a></li>
+<a href="/api/admin/logout">{{trans('multilingual.logout')}}</a>
 @endsection
 
 @section('content')
@@ -57,7 +57,6 @@
             </tr>
         </tfoot>
     </table>
-    <a href="/addCompanies" class="btn btn-primary">{{trans('multilingual.add')}}</a>
     <a href="/companies/export" class="btn btn-primary">{{trans('multilingual.download')}}</a>
 </div>
 @endsection

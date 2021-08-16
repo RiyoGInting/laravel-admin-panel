@@ -1,9 +1,9 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="index3.html" class="brand-link">
+  <a href="#" class="brand-link">
     <img src="{{ asset('') }}assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light"><b>Mini</b>-CRM</span>
+    <span class="brand-text font-weight-light">mini-crm</span>
   </a>
 
   <!-- Sidebar -->
@@ -23,33 +23,7 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-        <li class="nav-item menu-open">
-          <a href="#" class="nav-link active">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Menu
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="{{ url('/companies') }}" class="nav-link active">
-                <i class="far fa-circle nav-icon"></i>
-                <p>{{trans('multilingual.company_list')}}</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ url('/employees') }}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>{{trans('multilingual.employee_list')}}</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-        @guest
-        @if (Route::has('login'))
-        @endif
-        @else
+        <li class="nav-header">MENU</li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-edit"></i>
@@ -73,8 +47,29 @@
             </li>
           </ul>
         </li>
-
-        @endguest
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-table"></i>
+            <p>
+              DataTables
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="companies" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Companies </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="employees" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Employees</p>
+              </a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

@@ -20,8 +20,11 @@ class EmployeeController extends Controller
 
     public function getAll()
     {
-        $data = Employee::latest()->get();
-
+        $data = Employee::latest()
+            ->with('createdBy')
+            ->with('updatedBy')
+            ->get();
+        \Log::info($data);
         return datatables($data)
             ->addColumn('action', function ($data) {
                 return '<a href="edit/employees/' . $data->id . '" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>

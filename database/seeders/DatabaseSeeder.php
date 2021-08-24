@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             EmployeeSeeder::class,
             LanguageLinesSeeder::class,
             ItemSeeder::class,
+            SellSeeder::class,
         ]);
     }
 }

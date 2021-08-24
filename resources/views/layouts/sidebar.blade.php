@@ -51,6 +51,12 @@
                 <p>Add Item</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="/addSells" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add Sell</p>
+              </a>
+            </li>
           </ul>
         </li>
         <li class="nav-item">
@@ -78,6 +84,12 @@
               <a href="items" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Item</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="sells" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Sell</p>
               </a>
             </li>
           </ul>

@@ -19,7 +19,6 @@ class CreateSellsTable extends Migration
             $table->unsignedBigInteger('item_id');
             $table->foreign('item_id')->references('id')->on('items')
                 ->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('price');
             $table->float('discount');
             $table->unsignedBigInteger('employee_id');
             $table->foreign('employee_id')->references('id')->on('employees')

@@ -30,9 +30,9 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="email" class="col-sm-2 col-form-label">Price</label>
+                    <label for="price" class="col-sm-2 col-form-label">Price</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="email" value="{{ $i->price }}">
+                        <input type="text" class="form-control" name="price" value="{{ $i->price }}">
                     </div>
                 </div>
                 @endforeach

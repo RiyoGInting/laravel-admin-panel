@@ -22,4 +22,14 @@ class Employee extends Model
         'created_by_id',
         'updated_by_id'
     ];
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by_id', 'id');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(User::class, 'updated_by_id', 'id');
+    }
 }

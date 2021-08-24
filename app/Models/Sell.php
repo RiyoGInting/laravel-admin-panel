@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Sell extends Model
 {
     use HasFactory;
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class);
+    }
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
 }

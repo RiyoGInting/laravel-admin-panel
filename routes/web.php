@@ -5,6 +5,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\SellController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -57,4 +58,13 @@ Route::group(['middleware' => ['jwt']], function () {
     Route::put('items/{id}', [ItemController::class, 'update'])->name('update.item');
     Route::get('delete/items/{id}', [ItemController::class, 'deleteIndex']);
     Route::delete('delete/items/{id}', [ItemController::class, 'delete'])->name('delete.item');
+
+    Route::get('sells', [SellController::class, 'index']);
+    Route::get('sell/list', [SellController::class, 'getAll'])->name('sells.list');
+    Route::get('addSells', [SellController::class, 'addIndex']);
+    Route::post('addSells', [SellController::class, 'create'])->name('create.sell');
+    Route::get('edit/sells/{id}', [SellController::class, 'updateIndex']);
+    Route::put('sells/{id}', [SellController::class, 'update'])->name('update.sell');
+    Route::get('delete/sells/{id}', [SellController::class, 'deleteIndex']);
+    Route::delete('delete/sells/{id}', [SellController::class, 'delete'])->name('delete.sell');
 });

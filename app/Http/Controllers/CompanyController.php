@@ -20,7 +20,10 @@ class CompanyController extends Controller
 
     public function getAll()
     {
-        $data = Company::latest()->get();
+        $data = Company::latest()
+            ->with('createdBy')
+            ->with('updatedBy')
+            ->get();
 
         return datatables($data)
             ->addColumn('action', function ($data) {

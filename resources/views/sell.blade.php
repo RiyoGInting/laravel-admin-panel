@@ -11,7 +11,7 @@
 </style>
 @endsection
 
-@section('title', 'Company List')
+@section('title', 'Sell List')
 
 @section('custom-nav-li')
 <a href="/api/admin/logout">{{trans('multilingual.logout')}}</a>
@@ -19,26 +19,15 @@
 
 @section('content')
 <div class="container mt-5">
-    <form action="/companies/import" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="form-group">
-            <input type="file" name="file">
-
-            <button type="submit" class="btn btn-primary">{{trans('multilingual.import_excel')}}</button>
-        </div>
-    </form>
-
-    <table class="table table-bordered table-striped companies" style="width:100%">
+    <table class="table table-bordered table-striped sells" style="width:100%">
         <thead>
             <tr>
                 <th>No</th>
-                <th>{{trans('multilingual.name')}}</th>
-                <th>{{trans('multilingual.email')}}</th>
-                <th>{{trans('multilingual.logo')}}</th>
-                <th>{{trans('multilingual.website')}}</th>
-                <th>{{trans('multilingual.created_at')}}</th>
-                <th>{{trans('multilingual.created_by')}}</th>
-                <th>{{trans('multilingual.updated_by')}}</th>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Discount</th>
+                <th>Employee</th>
+                <th>Created Date</th>
                 <th>{{trans('multilingual.action')}}</th>
             </tr>
         </thead>
@@ -47,17 +36,14 @@
         <tfoot>
             <tr>
                 <th>No</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Logo</th>
-                <th>Website</th>
-                <th>Created At</th>
-                <th>Created By</th>
-                <th>Updated By</th>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Discount</th>
+                <th>Employee Name</th>
+                <th>Created Date</th>
             </tr>
         </tfoot>
     </table>
-    <a href="/companies/export" class="btn btn-primary">{{trans('multilingual.download')}}</a>
 </div>
 @endsection
 
@@ -69,10 +55,10 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.companies').DataTable({
+        $('.sells').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('companies.list') }}",
+            ajax: "{{ route('sells.list') }}",
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
@@ -80,33 +66,24 @@
                     "searchable": false
                 },
                 {
-                    data: 'name',
-                    name: 'name'
+                    data: 'item.name',
+                    name: 'item'
                 },
                 {
-                    data: 'email',
-                    name: 'email'
+                    data: 'item.price',
+                    name: 'price'
                 },
                 {
-                    data: 'logo',
-                    name: 'logo'
+                    data: 'discount',
+                    name: 'discount'
                 },
                 {
-                    data: 'website',
-                    name: 'website'
+                    data: 'employee.first_name',
+                    name: 'employee'
                 },
                 {
-                    data: 'created_at',
-                    name: 'created_at'
-                },
-                {
-                    data: 'created_by.name',
-                    name: 'created_by'
-                },
-                {
-                    data: 'updated_by.name',
-                    defaultContent: "",
-                    name: 'updated_by'
+                    data: 'created_date',
+                    name: 'created_date'
                 },
                 {
                     data: 'action',

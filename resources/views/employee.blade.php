@@ -106,11 +106,12 @@
                     name: 'created_at'
                 },
                 {
-                    data: 'created_by_id',
-                    name: 'created_by_id'
+                    data: 'created_by.name',
+                    name: 'created_by'
                 },
                 {
-                    data: 'updated_by_id',
+                    data: 'updated_by.name',
+                    defaultContent: "",
                     name: 'updated_by_id'
                 },
                 {

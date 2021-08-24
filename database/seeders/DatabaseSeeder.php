@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CompanySeeder::class,
             EmployeeSeeder::class,
-            LanguageLinesSeeder::class
+            LanguageLinesSeeder::class,
+            ItemSeeder::class,
         ]);
     }
 }

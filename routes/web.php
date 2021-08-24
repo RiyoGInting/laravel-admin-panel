@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -47,4 +48,13 @@ Route::group(['middleware' => ['jwt']], function () {
     Route::post('/employees/import', [EmployeeController::class, 'import']);
     Route::get('employees/list', [EmployeeController::class, 'getAll'])->name('employees.list');
     Route::get('employees', [EmployeeController::class, 'index']);
+
+    Route::get('items', [ItemController::class, 'index']);
+    Route::get('items/list', [ItemController::class, 'getAll'])->name('items.list');
+    Route::get('addItems', [ItemController::class, 'addIndex']);
+    Route::post('addItems', [ItemController::class, 'create'])->name('create.item');
+    Route::get('edit/items/{id}', [ItemController::class, 'updateIndex']);
+    Route::put('items/{id}', [ItemController::class, 'update'])->name('update.item');
+    Route::get('delete/items/{id}', [ItemController::class, 'deleteIndex']);
+    Route::delete('delete/items/{id}', [ItemController::class, 'delete'])->name('delete.item');
 });

@@ -45,6 +45,12 @@
                 <p>{{trans('multilingual.add_employee')}}</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="/addItems" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add Item</p>
+              </a>
+            </li>
           </ul>
         </li>
         <li class="nav-item">
@@ -66,6 +72,12 @@
               <a href="employees" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>{{trans('multilingual.employee')}}</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="items" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Item</p>
               </a>
             </li>
           </ul>

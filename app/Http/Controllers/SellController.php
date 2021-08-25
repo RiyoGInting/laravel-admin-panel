@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Sell;
 use App\Models\Item;
 use App\Models\Employee;
+use App\Models\SellSummary;
 use Carbon\Carbon;
 
 class SellController extends Controller
@@ -62,16 +63,53 @@ class SellController extends Controller
         // save to database
         $sell->save();
 
+        // find sell that was just created
+        $createdSell = Sell::where('id', $sell->id)
+            ->with('item')
+            ->with('employee')
+            ->first();
+
+        $discount = ($createdSell->item->price * $createdSell->discount) / 100;
+        $date = explode(" ", $createdSell->created_date);
+
+        // check if sell summary of employee based on request date exists
+        $record = SellSummary::where('employee_id', $request->employee_id)
+            ->where('date', $date[0])
+            ->first();
+
+        // if no record found then create new sell summary
+        if (!$record) {
+            // create sell summary
+            $sellSummary = new SellSummary;
+            $sellSummary->date = $createdSell->created_date;
+            $sellSummary->employee_id = $createdSell->employee_id;
+            $sellSummary->created_date = Carbon::now();
+            $sellSummary->price_total = $createdSell->item->price;
+            $sellSummary->discount_total = $createdSell->discount;
+            $sellSummary->total = $createdSell->item->price - $discount;
+
+            $sellSummary->save();
+        } else {
+            // new sell total
+            $total = $createdSell->item->price - $discount;
+
+            // if record found then update it
+            $record->last_update = Carbon::now();
+            $record->price_total = $record->price_total + $createdSell->item->price;
+            $record->discount_total = $record->discount_total + $createdSell->discount;
+            $record->total = $record->total + $total;
+
+            //save updated sell summary to db
+            $record->save();
+        }
+
         return redirect('sells');
     }
 
     public function updateIndex($id)
     {
 
-        $sell = Sell::where('id', $id)
-            // ->with('item')
-            // ->with('employee')
-            ->get();
+        $sell = Sell::where('id', $id)->get();
         $items = Item::select('name', 'id')->get();
         $employees = Employee::select('first_name', 'id')->get();
 

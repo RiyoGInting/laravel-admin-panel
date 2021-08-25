@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSellSumariesTable extends Migration
+class CreateSellSummariesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateSellSumariesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sell_sumaries', function (Blueprint $table) {
+        Schema::create('sell_summaries', function (Blueprint $table) {
             $table->id();
             $table->date('date');
             $table->unsignedBigInteger('employee_id');
             $table->foreign('employee_id')->references('id')->on('employees')
                 ->onDelete('cascade')->onUpdate('cascade');
             $table->dateTime('created_date');
-            $table->dateTime('last_update');
+            $table->dateTime('last_update')->nullable();
             $table->integer('price_total');
-            $table->integer('discount_total');
+            $table->float('discount_total');
             $table->integer('total');
             $table->timestamps();
         });
@@ -35,6 +35,6 @@ class CreateSellSumariesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sell_sumaries');
+        Schema::dropIfExists('sell_summaries');
     }
 }

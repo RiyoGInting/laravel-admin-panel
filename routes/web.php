@@ -68,6 +68,8 @@ Route::group(['middleware' => ['jwt']], function () {
     Route::put('sells/{id}', [SellController::class, 'update'])->name('update.sell');
     Route::get('delete/sells/{id}', [SellController::class, 'deleteIndex']);
     Route::delete('delete/sells/{id}', [SellController::class, 'delete'])->name('delete.sell');
+    Route::get('detail/{date}', [SellController::class, 'detailIndex']);
+    Route::get('get/detail{date}', [SellController::class, 'getDetail'])->name('get.detail');
 
     Route::get('sellsummary', [SellSummaryController::class, 'index']);
     Route::get('sellsummary/list', [SellSummaryController::class, 'getAll'])->name('sellsummary.list');

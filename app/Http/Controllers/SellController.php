@@ -176,4 +176,24 @@ class SellController extends Controller
 
         return redirect('sells');
     }
+
+    public function detailIndex($date)
+    {
+        return view('sells.detail')->with([
+            'date' => $date
+        ]);
+    }
+
+    public function getDetail($date)
+    {
+        $sells = Sell::latest()
+            ->with('item')
+            ->with('employee')
+            ->orWhere('created_date', 'like', '%' . $date . '%')
+            ->get();
+
+        return datatables($sells)
+            ->addIndexColumn()
+            ->make(true);
+    }
 }

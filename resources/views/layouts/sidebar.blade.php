@@ -69,31 +69,31 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="companies" class="nav-link">
+              <a href="http://127.0.0.1:8000/companies" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>{{trans('multilingual.company')}}</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="employees" class="nav-link">
+              <a href="http://127.0.0.1:8000/employees" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>{{trans('multilingual.employee')}}</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="items" class="nav-link">
+              <a href="http://127.0.0.1:8000/items" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Item</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="sells" class="nav-link">
+              <a href="http://127.0.0.1:8000/sells" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Sell</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="sellsummary" class="nav-link">
+              <a href="http://127.0.0.1:8000/sellsummary" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Sell Summary</p>
               </a>

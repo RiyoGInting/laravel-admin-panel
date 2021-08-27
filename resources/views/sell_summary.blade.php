@@ -113,7 +113,10 @@
                 },
                 {
                     data: 'date',
-                    name: 'date'
+                    name: 'date',
+                    render: function(data, type, row) {
+                        return "<a href='detail/" + row.date + "'>" + row.date + "</a>"
+                    }
                 },
                 {
                     data: 'employee.first_name',

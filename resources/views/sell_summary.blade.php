@@ -37,6 +37,13 @@
             @endforeach
         </select>
     </div>
+    <div class="col-md-4">
+        <label>Filter Date</label>
+        <div class="row">
+            <input id="filter-date-from" class="form-control filter" placeholder="from yyyy-mm-dd">
+            <input id="filter-date-to" class="form-control filter" placeholder="to yyyy-mm-dd">
+        </div>
+    </div>
 </div>
 <div class="container mt-5">
     <table id="sellsummary" class="table table-bordered table-striped" style="width:100%">
@@ -80,6 +87,8 @@
     $(document).ready(function() {
         let employee = $("#filter-employee").val();
         let company = $("#filter-company").val();
+        let from = $("#filter-date-from").val();
+        let to = $("#filter-date-to").val();
 
         const table = $('#sellsummary').DataTable({
             processing: true,
@@ -89,6 +98,8 @@
                 data: function(d) {
                     d.employee = employee;
                     d.company = company;
+                    d.from = from;
+                    d.to = to;
 
                     return d
                 },
@@ -147,6 +158,8 @@
         $(".filter").on('change', function() {
             employee = $("#filter-employee").val()
             company = $("#filter-company").val()
+            from = $("#filter-date-from").val()
+            to = $("#filter-date-to").val()
 
             table.ajax.reload(null, false)
         })

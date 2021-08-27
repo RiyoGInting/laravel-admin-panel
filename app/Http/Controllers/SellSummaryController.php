@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SellSummary;
 use App\Models\Company;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class SellSummaryController extends Controller
@@ -27,8 +28,20 @@ class SellSummaryController extends Controller
 
     public function getAll(Request $request)
     {
+        $from = '2000/01/01';
+        $to = Carbon::now();
+
+        if ($request->input('from') != null) {
+            $from = $request->input('from');
+        }
+
+        if ($request->input('to') != null) {
+            $to = $request->input('to');
+        }
+
         $sellsummary = SellSummary::latest()
             ->with('employee')
+            ->whereBetween('date', [$from, $to])
             ->get();
 
         if ($request->input('company') != null && $request->input('employee') != null) {
@@ -38,6 +51,7 @@ class SellSummaryController extends Controller
                     "employees.company_id as company_id"
                 ))
                 ->with('employee')
+                ->whereBetween('date', [$from, $to])
                 ->where('employee_id', $request->input('employee'))
                 ->join('employees', 'employees.id', '=', 'sell_summaries.employee_id')
                 ->get()
@@ -45,6 +59,7 @@ class SellSummaryController extends Controller
         } else if ($request->input('employee') != null) {
             $sellsummary = SellSummary::latest()
                 ->with('employee')
+                ->whereBetween('date', [$from, $to])
                 ->where('employee_id', $request->input('employee'))
                 ->get();
         } else if ($request->input('company') != null) {
@@ -54,6 +69,7 @@ class SellSummaryController extends Controller
                     "employees.company_id as company_id"
                 ))
                 ->with('employee')
+                ->whereBetween('date', [$from, $to])
                 ->join('employees', 'employees.id', '=', 'sell_summaries.employee_id')
                 ->get()
                 ->where("company_id", $request->input('company'))->values();

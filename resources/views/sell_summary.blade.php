@@ -18,8 +18,28 @@
 @endsection
 
 @section('content')
+<div class="row">
+    <div class="col-md-4">
+        <label>Filter Employee</label>
+        <select id="filter-employee" class="form-control filter">
+            <option value="">Select Employee</option>
+            @foreach($sellsummary as $s)
+            <option value="{{$s->employee->id}}">{{$s->employee->first_name}}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="col-md-4">
+        <label>Filter Company</label>
+        <select id="filter-company" class="form-control filter">
+            <option value="">Select Company</option>
+            @foreach($companies as $c)
+            <option value="{{$c['id']}}">{{$c['name']}}</option>
+            @endforeach
+        </select>
+    </div>
+</div>
 <div class="container mt-5">
-    <table class="table table-bordered table-striped sellsummary" style="width:100%">
+    <table id="sellsummary" class="table table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>No</th>
@@ -58,10 +78,22 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.sellsummary').DataTable({
+        let employee = $("#filter-employee").val();
+        let company = $("#filter-company").val();
+
+        const table = $('#sellsummary').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('sellsummary.list') }}",
+            ajax: {
+                url: "{{ url('sellsummary/list') }}",
+                data: function(d) {
+                    d.employee = employee;
+                    d.company = company;
+
+                    return d
+                },
+                type: "GET"
+            },
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
@@ -112,6 +144,12 @@
                 [0, 'desc']
             ]
         });
+        $(".filter").on('change', function() {
+            employee = $("#filter-employee").val()
+            company = $("#filter-company").val()
+
+            table.ajax.reload(null, false)
+        })
     });
 </script>
 @endsection

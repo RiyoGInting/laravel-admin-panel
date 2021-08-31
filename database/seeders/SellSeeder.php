@@ -17,9 +17,9 @@ class SellSeeder extends Seeder
     {
         for ($i = 0; $i < 100; $i++) {
             DB::table('sells')->insert([
-                'created_date' => Carbon::now(),
+                'created_date' => Carbon::today()->subDays(rand(0, 365)),
                 'item_id' => rand(1, 100),
-                'discount' => mt_rand(0, 10) / 10,
+                'discount' => mt_rand(10, 25),
                 'employee_id' => rand(1, 100),
             ]);
         }

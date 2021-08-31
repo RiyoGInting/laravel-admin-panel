@@ -11,7 +11,7 @@
 </style>
 @endsection
 
-@section('title', 'Sell List')
+@section('title', 'Sell Summary List')
 
 @section('custom-nav-li')
 <a href="/api/admin/logout">{{trans('multilingual.logout')}}</a>

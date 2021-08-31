@@ -24,6 +24,9 @@ class SellController extends Controller
             ->get();
 
         return datatables($sells)
+            ->editColumn('item.price', function ($sells) {
+                return "Rp " . number_format($sells->item->price, 2, ",", ".");
+            })
             ->addColumn('action', function ($sells) {
                 return '<a href="edit/sells/' . $sells->id . '" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i>Update</a>
                     <a href="delete/sells/' . $sells->id . '"  class="btn btn-xs btn-danger"><i class="fa fa-trash"></i>Delete</a>';
@@ -69,6 +72,7 @@ class SellController extends Controller
             ->with('employee')
             ->first();
 
+        // count discount
         $discount = ($createdSell->item->price * $createdSell->discount) / 100;
         $date = explode(" ", $createdSell->created_date);
 
@@ -85,19 +89,16 @@ class SellController extends Controller
             $sellSummary->employee_id = $createdSell->employee_id;
             $sellSummary->created_date = Carbon::now();
             $sellSummary->price_total = $createdSell->item->price;
-            $sellSummary->discount_total = $createdSell->discount;
+            $sellSummary->discount_total = $discount;
             $sellSummary->total = $createdSell->item->price - $discount;
 
             $sellSummary->save();
         } else {
-            // new sell total
-            $total = $createdSell->item->price - $discount;
-
             // if record found then update it
             $record->last_update = Carbon::now();
             $record->price_total = $record->price_total + $createdSell->item->price;
-            $record->discount_total = $record->discount_total + $createdSell->discount;
-            $record->total = $record->total + $total;
+            $record->discount_total = $record->discount_total + $discount;
+            $record->total = $record->total + ($createdSell->item->price - $discount);
 
             //save updated sell summary to db
             $record->save();
@@ -193,6 +194,9 @@ class SellController extends Controller
             ->get();
 
         return datatables($sells)
+            ->editColumn('item.price', function ($sells) {
+                return "Rp " . number_format($sells->item->price, 2, ",", ".");
+            })
             ->addIndexColumn()
             ->make(true);
     }

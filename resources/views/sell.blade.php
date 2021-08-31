@@ -25,7 +25,7 @@
                 <th>No</th>
                 <th>Item</th>
                 <th>Price</th>
-                <th>Discount</th>
+                <th>Discount %</th>
                 <th>Employee</th>
                 <th>Created Date</th>
                 <th>{{trans('multilingual.action')}}</th>
@@ -38,7 +38,7 @@
                 <th>No</th>
                 <th>Item</th>
                 <th>Price</th>
-                <th>Discount</th>
+                <th>Discount %</th>
                 <th>Employee Name</th>
                 <th>Created Date</th>
             </tr>

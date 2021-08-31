@@ -17,6 +17,9 @@ class ItemController extends Controller
         $items = Item::latest()->get();
 
         return datatables($items)
+            ->editColumn('price', function ($items) {
+                return "Rp " . number_format($items->price, 2, ",", ".");
+            })
             ->addColumn('action', function ($items) {
                 return '<a href="edit/items/' . $items->id . '" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i>Update</a>
                     <a href="delete/items/' . $items->id . '"  class="btn btn-xs btn-danger"><i class="fa fa-trash"></i>Delete</a>';

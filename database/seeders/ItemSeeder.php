@@ -22,7 +22,7 @@ class ItemSeeder extends Seeder
             DB::table('items')->insert([
                 'name' => $faker->word,
                 'price' => random_int(10000, 100000),
-                'created_at' => Carbon::now(),
+                'created_at' => Carbon::today()->subDays(rand(0, 365)),
             ]);
         }
     }

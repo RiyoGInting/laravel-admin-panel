@@ -76,6 +76,15 @@ class SellSummaryController extends Controller
         }
 
         return datatables($sellsummary)
+            ->editColumn('price_total', function ($sellsummary) {
+                return "Rp " . number_format($sellsummary->price_total, 2, ",", ".");
+            })
+            ->editColumn('total', function ($sellsummary) {
+                return "Rp " . number_format($sellsummary->total, 2, ",", ".");
+            })
+            ->editColumn('discount_total', function ($sellsummary) {
+                return "Rp " . number_format($sellsummary->discount_total, 2, ",", ".");
+            })
             ->addIndexColumn()
             ->make(true);
     }

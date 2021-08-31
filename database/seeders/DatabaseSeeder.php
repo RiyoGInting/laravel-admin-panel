@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             LanguageLinesSeeder::class,
             ItemSeeder::class,
             SellSeeder::class,
+            SellSummarySeeder::class,
         ]);
     }
 }

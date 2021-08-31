@@ -25,7 +25,7 @@
                 <th>No</th>
                 <th>Item</th>
                 <th>Price</th>
-                <th>Discount</th>
+                <th>Discount %</th>
                 <th>Employee</th>
                 <th>Created Date</th>
             </tr>

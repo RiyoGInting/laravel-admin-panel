@@ -48,13 +48,13 @@
             <li class="nav-item">
               <a href="/addItems" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Add Item</p>
+                <p>{{trans('multilingual.add_item')}}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="/addSells" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Add Sell</p>
+                <p>{{trans('multilingual.add_sell')}}</p>
               </a>
             </li>
           </ul>
@@ -83,19 +83,19 @@
             <li class="nav-item">
               <a href="http://127.0.0.1:8000/items" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Item</p>
+                <p>{{trans('multilingual.item')}}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="http://127.0.0.1:8000/sells" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Sell</p>
+                <p>{{trans('multilingual.sell')}}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="http://127.0.0.1:8000/sellsummary" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Sell Summary</p>
+                <p>{{trans('multilingual.sell_summary')}}</p>
               </a>
             </li>
           </ul>

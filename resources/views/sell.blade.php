@@ -23,11 +23,11 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Item</th>
-                <th>Price</th>
-                <th>Discount %</th>
-                <th>Employee</th>
-                <th>Created Date</th>
+                <th>{{trans('multilingual.item')}}</th>
+                <th>{{trans('multilingual.price')}}</th>
+                <th>{{trans('multilingual.discount')}} %</th>
+                <th>{{trans('multilingual.employee')}}</th>
+                <th>{{trans('multilingual.created_date')}}</th>
                 <th>{{trans('multilingual.action')}}</th>
             </tr>
         </thead>
@@ -82,8 +82,8 @@
                     name: 'employee'
                 },
                 {
-                    data: 'created_date',
-                    name: 'created_date'
+                    data: 'created_at',
+                    name: 'created_at'
                 },
                 {
                     data: 'action',

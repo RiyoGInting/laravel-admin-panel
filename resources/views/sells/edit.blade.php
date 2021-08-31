@@ -16,14 +16,14 @@
 <div class="center">
     <div class="card">
         <div class="card-header">
-            <h3 class="text-center">Edit Sell</h3>
+            <h3 class="text-center">{{trans('multilingual.edit_sell')}}</h3>
         </div>
         <div class="card-body">
             <form method="POST" action="{{ route('update.sell', $id) }}">
                 @csrf
                 @foreach($sell as $s)
                 <div class="mb-3 row">
-                    <label for="item_id" class="col-sm-2 col-form-label">Item</label>
+                    <label for="item_id" class="col-sm-2 col-form-label">{{trans('multilingual.item')}}</label>
                     <div class="col-sm-10">
                         <select name="item_id" id="item_id">
                             <option selected="selected" value="">{{$s->item->name}}</option>
@@ -34,13 +34,13 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="discount" class="col-sm-2 col-form-label">Discount</label>
+                    <label for="discount" class="col-sm-2 col-form-label">{{trans('multilingual.discount')}}</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="discount" value="{{ $s->discount }}">
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="employee_id" class="col-sm-2 col-form-label">Employee</label>
+                    <label for="employee_id" class="col-sm-2 col-form-label">{{trans('multilingual.employee')}}</label>
                     <div class="col-sm-10">
                         <select name="employee_id" id="employee_id">
                             <option selected="selected" value="">{{$s->employee->first_name}}</option>

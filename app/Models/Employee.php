@@ -32,4 +32,9 @@ class Employee extends Model
     {
         return $this->belongsTo(User::class, 'updated_by_id', 'id');
     }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id', 'id');
+    }
 }

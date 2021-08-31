@@ -24,8 +24,8 @@
             <tr>
                 <th>No</th>
                 <th>{{trans('multilingual.name')}}</th>
-                <th>Price</th>
-                <th>Created At</th>
+                <th>{{trans('multilingual.price')}}</th>
+                <th>{{trans('multilingual.created_at')}}</th>
                 <th>{{trans('multilingual.action')}}</th>
             </tr>
         </thead>

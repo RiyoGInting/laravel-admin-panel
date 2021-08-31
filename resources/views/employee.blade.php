@@ -36,7 +36,7 @@
                 <th>{{trans('multilingual.last_name')}}</th>
                 <th>{{trans('multilingual.email')}}</th>
                 <th>{{trans('multilingual.phone')}}</th>
-                <th>{{trans('multilingual.company_id')}}</th>
+                <th>{{trans('multilingual.company')}}</th>
                 <th>{{trans('multilingual.created_at')}}</th>
                 <th>{{trans('multilingual.created_by')}}</th>
                 <th>Updated By</th>
@@ -50,7 +50,7 @@
                 <th>No</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Company ID</th>
+                <th>Company</th>
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Created At</th>
@@ -98,8 +98,8 @@
                     name: 'phone'
                 },
                 {
-                    data: 'company_id',
-                    name: 'company_id'
+                    data: 'company.name',
+                    name: 'company'
                 },
                 {
                     data: 'created_at',

@@ -16,11 +16,13 @@ class SellSeeder extends Seeder
     public function run()
     {
         for ($i = 0; $i < 100; $i++) {
+            $date = Carbon::today()->subDays(rand(0, 365));
             DB::table('sells')->insert([
-                'created_date' => Carbon::today()->subDays(rand(0, 365)),
+                'created_date' => $date,
                 'item_id' => rand(1, 100),
                 'discount' => mt_rand(10, 25),
                 'employee_id' => rand(1, 100),
+                'created_at' => $date,
             ]);
         }
     }

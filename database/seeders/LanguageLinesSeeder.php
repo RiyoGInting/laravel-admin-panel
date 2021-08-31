@@ -204,5 +204,120 @@ class LanguageLinesSeeder extends Seeder
             'key' => 'datatables',
             'text' => ['en' => 'Data Tables', 'id' => 'Tabel Data'],
         ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'item',
+            'text' => ['en' => 'Item', 'id' => 'Barang'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'sell',
+            'text' => ['en' => 'Sell', 'id' => 'Penjualan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'sell_summary',
+            'text' => ['en' => 'Sell Summary', 'id' => 'Ringkasan Penjualan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'add_item',
+            'text' => ['en' => 'Add Item', 'id' => 'Tambah Barang'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'add_sell',
+            'text' => ['en' => 'Add Sell', 'id' => 'Tambah Penjualan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'add_item_form',
+            'text' => ['en' => 'Add Item Form', 'id' => 'Formulir Tambah Barang'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'price',
+            'text' => ['en' => 'Price', 'id' => 'Harga'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'add_sell_form',
+            'text' => ['en' => 'Add Sell Form', 'id' => 'Formulir Tambah Penjualan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'select_item',
+            'text' => ['en' => 'Select Item', 'id' => 'Pilih Barang'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'discount',
+            'text' => ['en' => 'Discount', 'id' => 'Potongan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'select_employee',
+            'text' => ['en' => 'Select Employee', 'id' => 'Pilih Karyawan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'edit_item',
+            'text' => ['en' => 'Edit Item', 'id' => 'Edit Barang'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'created_date',
+            'text' => ['en' => 'Created Date', 'id' => 'Tanggal Dibuat'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'edit_sell',
+            'text' => ['en' => 'Edit Sell', 'id' => 'Ubah Penjualan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'filter_employee',
+            'text' => ['en' => 'Filter Employee', 'id' => 'Filter Karyawan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'filter_company',
+            'text' => ['en' => 'Filter Company', 'id' => 'Filter Perusahaan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'filter_date',
+            'text' => ['en' => 'Filter Date', 'id' => 'Filter Tanggal'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'select_company',
+            'text' => ['en' => 'Select Company', 'id' => 'Pilih Perusahaan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'date',
+            'text' => ['en' => 'Date', 'id' => 'Tanggal'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'last_update',
+            'text' => ['en' => 'Last Update', 'id' => 'Terakhir Diupdate'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'price_total',
+            'text' => ['en' => 'Total Price', 'id' => 'Jumlah Harga'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'discount_total',
+            'text' => ['en' => 'Total Discount', 'id' => 'Jumlah Potongan'],
+        ]);
+        LanguageLine::create([
+            'group' => 'multilingual',
+            'key' => 'total',
+            'text' => ['en' => 'Total', 'id' => 'Jumlah'],
+        ]);
     }
 }

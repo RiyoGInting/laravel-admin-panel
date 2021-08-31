@@ -27,6 +27,7 @@ class SellSummarySeeder extends Seeder
                 'price_total' => $price_total,
                 'discount_total' => $discount_total,
                 'total' => $price_total - $discount_total,
+                'created_at' => $date,
             ]);
         }
     }

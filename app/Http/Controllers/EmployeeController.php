@@ -23,6 +23,7 @@ class EmployeeController extends Controller
         $data = Employee::latest()
             ->with('createdBy')
             ->with('updatedBy')
+            ->with('company')
             ->get();
 
         return datatables($data)

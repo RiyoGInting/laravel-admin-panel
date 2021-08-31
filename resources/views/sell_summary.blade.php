@@ -20,25 +20,25 @@
 @section('content')
 <div class="row">
     <div class="col-md-4">
-        <label>Filter Employee</label>
+        <label>{{trans('multilingual.filter_employee')}}</label>
         <select id="filter-employee" class="form-control filter">
-            <option value="">Select Employee</option>
+            <option value="">{{trans('multilingual.select_employee')}}</option>
             @foreach($sellsummary as $s)
             <option value="{{$s->employee->id}}">{{$s->employee->first_name}}</option>
             @endforeach
         </select>
     </div>
     <div class="col-md-4">
-        <label>Filter Company</label>
+        <label>{{trans('multilingual.filter_company')}}</label>
         <select id="filter-company" class="form-control filter">
-            <option value="">Select Company</option>
+            <option value="">{{trans('multilingual.select_company')}}</option>
             @foreach($companies as $c)
             <option value="{{$c['id']}}">{{$c['name']}}</option>
             @endforeach
         </select>
     </div>
     <div class="col-md-4">
-        <label>Filter Date</label>
+        <label>{{trans('multilingual.filter_date')}}</label>
         <div class="row">
             <input id="filter-date-from" class="form-control filter" placeholder="from yyyy-mm-dd">
             <input id="filter-date-to" class="form-control filter" placeholder="to yyyy-mm-dd">
@@ -50,13 +50,13 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Date</th>
-                <th>Employee</th>
-                <th>Created Date</th>
-                <th>Last Update</th>
-                <th>Price Total</th>
-                <th>Discount Total</th>
-                <th>Total</th>
+                <th>{{trans('multilingual.date')}}</th>
+                <th>{{trans('multilingual.employee')}}</th>
+                <th>{{trans('multilingual.created_date')}}</th>
+                <th>{{trans('multilingual.last_update')}}</th>
+                <th>{{trans('multilingual.price_total')}}</th>
+                <th>{{trans('multilingual.discount_total')}}</th>
+                <th>{{trans('multilingual.total')}}</th>
             </tr>
         </thead>
         <tbody>
@@ -123,8 +123,8 @@
                     name: 'employee'
                 },
                 {
-                    data: 'created_date',
-                    name: 'created_date'
+                    data: 'created_at',
+                    name: 'created_at'
                 },
                 {
                     data: 'last_update',

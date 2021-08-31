@@ -16,7 +16,7 @@
 <div class="center">
     <div class="card">
         <div class="card-header">
-            <h3 class="text-center">Edit Item</h3>
+            <h3 class="text-center">{{trans('multilingual.edit_item')}}</h3>
         </div>
         <div class="card-body">
             <form method="POST" action="{{ route('update.item', $id) }}">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="price" class="col-sm-2 col-form-label">Price</label>
+                    <label for="price" class="col-sm-2 col-form-label">{{trans('multilingual.price')}}</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="price" value="{{ $i->price }}">
                     </div>
